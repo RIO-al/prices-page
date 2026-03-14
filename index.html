@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: url('1000057477.jpg') no-repeat center center fixed;
+            background: url('background.jpg') no-repeat center center fixed;
             background-size: cover;
             min-height: 100vh;
             margin: 0;
@@ -22,7 +22,7 @@
         /* --- تصميم إشعار الآيفون --- */
         .ios-notification {
             position: fixed;
-            top: -100px; /* يبدأ خارج الشاشة من الأعلى */
+            top: -100px;
             left: 50%;
             transform: translateX(-50%);
             width: 350px;
@@ -35,17 +35,17 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             z-index: 9999;
             transition: top 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-            direction: ltr; /* لضمان تنسيق أيقونة الآيفون يميناً ويساراً */
+            direction: ltr;
         }
 
         .ios-notification.show {
-            top: 20px; /* ينزل للأسفل عند التفعيل */
+            top: 20px;
         }
 
         .notif-img {
             width: 50px;
             height: 50px;
-            border-radius: 50%; /* جعل الصورة دائرية */
+            border-radius: 50%;
             object-fit: cover;
             margin-right: 15px;
         }
@@ -71,7 +71,7 @@
             display: block;
         }
 
-        /* --- بقية تنسيقات الصفحة الأصلية --- */
+        /* --- تنسيقات الصفحة الرئيسية --- */
         .container {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
@@ -84,28 +84,38 @@
             position: relative;
         }
 
-        /* النص البنفسجي النيون */
+        /* محاذاة جميع النصوص في اليمين */
+        .center-texts {
+            text-align: right;
+        }
+
+        /* النص العلوي البنفسجي بدون نيون */
         .corner-text {
-            position: absolute;
-            top: 20px;
-            left: 20px;
+            text-align: right;
             font-size: 1.8em;
             font-weight: bold;
-            color: #aa00ff; /* اللون البنفسجي الأساسي */
-            text-shadow: 0 0 5px #d500ff, 0 0 10px #d500ff, 0 0 15px #aa00ff, 0 0 20px #aa00ff; /* تأثير النيون */
-            animation: blink 2s infinite;
+            color: #aa00ff; /* اللون البنفسجي فقط بدون نيون */
+            margin: 0 0 15px 0; /* مسافة من الأسفل قبل الخط */
+            padding-bottom: 15px; /* مسافة داخلية قبل الخط */
+            border-bottom: 3px solid #aa00ff; /* خط فاصل بنفسجي */
+            width: 100%;
         }
 
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
+        /* إزالة التباعد بين النصوص السفلية */
         .greeting {
             font-size: 1.8em;
-            margin: 15px 0;
             color: #ffffff;
             font-weight: 500;
+            margin: 0; /* إزالة التباعد الخارجي */
+            padding: 0; /* إزالة التباعد الداخلي */
+            line-height: 1.4; /* تحسين القراءة مع إبقاء النصوص متقاربة */
+            text-align: right;
+        }
+
+        /* الحاوية الداخلية للنصوص السفلية */
+        .prices-container {
+            margin-top: 10px; /* مسافة بسيطة بعد الخط */
+            text-align: right;
         }
 
         @media only screen and (max-width: 600px) {
@@ -124,14 +134,16 @@
     </div>
 
     <div class="container">
-        <div class="corner-text">• عزيزي اليك اسعار اشتراك البوتات</div>
         <div class="center-texts">
-            <div class="greeting">1 شهر = 4$</div>
-            <div class="greeting">2 شهر = 7$</div>
-            <div class="greeting">3 شهر = 10$</div>
-            <div class="greeting">4 شهر = 13$</div>
-            <div class="greeting">5 شهر = 16$</div>
-            <div class="greeting">6 شهر = 19$</div>
+            <div class="corner-text">• عزيزي اليك اسعار اشتراك البوتات</div>
+            <div class="prices-container">
+                <div class="greeting">1 شهر = 4$</div>
+                <div class="greeting">2 شهر = 7$</div>
+                <div class="greeting">3 شهر = 10$</div>
+                <div class="greeting">4 شهر = 13$</div>
+                <div class="greeting">5 شهر = 16$</div>
+                <div class="greeting">6 شهر = 19$</div>
+            </div>
         </div>
     </div>
 
@@ -139,15 +151,13 @@
         window.onload = function() {
             const notif = document.getElementById('iosNotif');
             
-            // إظهار الإشعار بعد ثانية من دخول الموقع
             setTimeout(() => {
                 notif.classList.add('show');
             }, 1000);
 
-            // إخفاء الإشعار بعد 50 ثانية (50000 مللي ثانية)
             setTimeout(() => {
                 notif.classList.remove('show');
-            }, 51000); // أضفت ثانية إضافية لضمان بقاءه 50 ثانية كاملة وهو ظاهر
+            }, 51000);
         };
     </script>
 
