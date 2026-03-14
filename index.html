@@ -68,23 +68,23 @@ margin:2px 0 0 0;
 display:block
 }
 
-/* المربع الأسود */
+/* المربع الأسود - تم التصغير */
 .outer-black-box{
 background:#000;
 border-radius:12px;
-padding:12px 20px;
-margin-bottom:20px;
+padding:8px 16px;  /* تم التصغير من 12px 20px */
+margin-bottom:15px;  /* تم التصغير من 20px */
 border:2px solid #fff;
 box-shadow:0 4px 20px rgba(0,0,0,.7);
-width:520px;
-max-width:92%;
+width:460px;  /* تم التصغير من 520px */
+max-width:90%;  /* تم التعديل ليكون مناسباً */
 display:flex;
 align-items:center;
 justify-content:space-between
 }
 
 .corner-text{
-font-size:1.4em;
+font-size:1.2em;  /* تم التصغير من 1.4em */
 font-weight:bold;
 color:#fff;
 margin:0;
@@ -93,23 +93,23 @@ text-align:right
 }
 
 .log-image{
-width:40px;
-height:40px;
+width:32px;  /* تم التصغير من 40px */
+height:32px;  /* تم التصغير من 40px */
 border-radius:50%;
 object-fit:cover;
 border:2px solid #fff
 }
 
-/* المربع الشفاف */
+/* المربع الشفاف - تم التصغير */
 .container{
 background:rgba(255,255,255,.15);
 backdrop-filter:blur(10px);
 border-radius:16px;
-padding:25px 30px;
+padding:15px 20px;  /* تم التصغير من 25px 30px */
 box-shadow:0 8px 32px rgba(0,0,0,.3);
 border:1px solid rgba(255,255,255,.2);
-width:520px;
-max-width:92%;
+width:460px;  /* تم التصغير من 520px */
+max-width:90%;
 position:relative
 }
 
@@ -117,7 +117,7 @@ position:relative
 .pricing-rows{
 display:flex;
 flex-direction:column;
-gap:8px;
+gap:4px;  /* تم التصغير من 8px */
 width:100%
 }
 
@@ -126,14 +126,14 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 border-bottom:1px dashed rgba(255,255,255,.2);
-padding:6px 0
+padding:4px 0  /* تم التصغير من 6px */
 }
 
 .price-row:last-child{border-bottom:none}
 
 .right-item,
 .left-item{
-font-size:1.4em;
+font-size:1.2em;  /* تم التصغير من 1.4em */
 color:#fff;
 font-weight:500;
 white-space:nowrap;
@@ -145,7 +145,7 @@ text-shadow:1px 1px 2px rgba(0,0,0,.7)
 position:absolute;
 left:12px;
 bottom:-12px;
-width:35px
+width:30px  /* تم التصغير من 35px */
 }
 
 .telegram-image{
@@ -156,29 +156,29 @@ border:2px solid #fff
 
 /* زر الدفع */
 .pay-btn{
-margin-top:20px;
+margin-top:18px;  /* تم التصغير قليلاً من 20px */
 background:#000;
 color:#fff;
-padding:12px 30px;
+padding:10px 25px;  /* تم التصغير من 12px 30px */
 border-radius:30px;
 text-decoration:none;
 display:inline-block;
-font-size:1em;
+font-size:0.95em;  /* تم التصغير قليلاً من 1em */
 box-shadow:0 4px 10px rgba(0,0,0,.4)
 }
 
 /* النصوص الزرقاء */
 .extra-links{
-margin-top:15px;
+margin-top:12px;  /* تم التصغير من 15px */
 border-top:1px solid rgba(255,255,255,.3);
-padding-top:10px;
-font-size:14px
+padding-top:8px;  /* تم التصغير من 10px */
+font-size:13px  /* تم التصغير من 14px */
 }
 
 .extra-links span{
 color:#4da3ff;
 cursor:pointer;
-margin:0 8px
+margin:0 6px  /* تم التصغير من 8px */
 }
 
 /* popup */
@@ -299,7 +299,7 @@ cursor:pointer
 window.onload=function(){
 const notif=document.getElementById("iosNotif")
 setTimeout(()=>{notif.classList.add("show")},1000)
-setTimeout(()=>{notif.classList.remove("show")},51000)
+setTimeout(()=>{notif.classList.remove("show")},11000) // تم التعديل من 51000 إلى 11000 (10 ثواني)
 }
 
 function showPayments(){
