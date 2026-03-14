@@ -23,20 +23,20 @@
             background: rgba(255, 255, 255, 0.15); /* خلفية شفافة */
             backdrop-filter: blur(10px); /* تأثير ضبابي خلف المربع */
             border-radius: 20px;
-            padding: 50px;
+            padding: 30px 25px; /* تقليل الحجم */
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.2);
             max-width: 90%;
-            width: 500px; /* حجم متوسط للمربع */
+            width: 350px; /* تصغير عرض المربع */
             position: relative;
         }
 
         /* نص الزاوية اليسرى - مع تأثير الوميض */
         .corner-text {
             position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 1.8em;
+            top: 15px;
+            left: 15px;
+            font-size: 1.5em; /* تصغير الخط قليلاً */
             font-weight: bold;
             color: #1a1a1a; /* اسود لامع */
             text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
@@ -51,67 +51,69 @@
             50% { opacity: 0; }
         }
 
-        /* النصوص في وسط المربع */
-        .center-texts {
-            text-align: center;
+        /* النصوص في أقصى اليمين */
+        .right-texts {
+            text-align: right; /* محاذاة لليمين */
             margin-top: 40px; /* مسافة كافية تحت النص العلوي */
+            margin-right: 0; /* إزالة أي مسافة يسارية */
+            width: 100%;
         }
 
         .greeting {
-            font-size: 1.8em;
-            margin: 15px 0;
+            font-size: 1.2em; /* تصغير حجم النص */
+            margin: 3px 0; /* تقليل التباعد بين النصوص */
             color: #ffffff; /* ابيض */
             font-weight: 500;
+            line-height: 1.3; /* تحسين التباعد العمودي */
         }
 
         /* =====  أجهزة الموبايل (شاشات عرضها 600px أو أقل) ===== */
         @media only screen and (max-width: 600px) {
             .container {
-                width: 85%;
-                padding: 30px;
+                width: 80%;
+                padding: 25px 20px;
             }
 
             .corner-text {
-                font-size: 1.4em;
-                top: 15px;
-                left: 15px;
+                font-size: 1.2em;
+                top: 12px;
+                left: 12px;
             }
 
             .greeting {
-                font-size: 1.4em;
-                margin: 10px 0;
+                font-size: 1em;
             }
         }
 
         /* =====  أجهزة الآيباد والأجهزة اللوحية (شاشات بين 601px و 1024px) ===== */
         @media only screen and (min-width: 601px) and (max-width: 1024px) {
             .container {
-                width: 70%;
-                padding: 40px;
+                width: 60%;
+                padding: 28px 22px;
             }
 
             .corner-text {
-                font-size: 1.6em;
+                font-size: 1.4em;
             }
 
             .greeting {
-                font-size: 1.6em;
+                font-size: 1.1em;
             }
         }
 
         /* =====  أجهزة الحاسوب (شاشات عرضها 1025px أو أكثر) ===== */
         @media only screen and (min-width: 1025px) {
             .container {
-                width: 500px;
-                padding: 50px;
+                width: 350px;
+                padding: 30px 25px;
             }
 
             .corner-text {
-                font-size: 1.8em;
+                font-size: 1.5em;
             }
 
             .greeting {
-                font-size: 1.8em;
+                font-size: 1.2em;
             }
         }
     </style>
@@ -121,8 +123,8 @@
         <!-- نص الزاوية اليسرى مع تأثير الوميض -->
         <div class="corner-text">TEᗩᗰ ᖇOᐯEᖇ</div>
         
-        <!-- النصوص في الوسط -->
-        <div class="center-texts">
+        <!-- النصوص في أقصى اليمين -->
+        <div class="right-texts">
             <div class="greeting">اهلا بك</div>
             <div class="greeting">كيف حالك</div>
             <div class="greeting">هل انت بخير ؟</div>
