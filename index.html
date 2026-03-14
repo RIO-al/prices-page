@@ -9,7 +9,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             /* إضافة الصورة كخلفية */
             background: url('1000057477.jpg') no-repeat center center fixed;
-            background-size: cover; /* تجعل الصورة تغطي كامل الشاشة */
+            background-size: cover;
             min-height: 100vh;
             margin: 0;
             display: flex;
@@ -20,7 +20,6 @@
         }
 
         .message {
-            /* تم إزالة المربع الشفاف بالكامل */
             padding: 20px;
             max-width: 90%;
         }
@@ -28,26 +27,38 @@
         h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
-            /* نص أزرق نيون مناسب للخلفية */
-            color: #00f3ff;
+            /* الأخضر الزمردي مع تأثير نيون */
+            color: #00a86b;
             text-shadow: 
-                0 0 10px #00f3ff,
-                0 0 20px #00f3ff,
-                0 0 30px #00b7ff,
-                0 0 40px #0088ff;
+                0 0 10px #00a86b,
+                0 0 20px #00a86b,
+                0 0 30px #008f5c,
+                0 0 40px #00754a;
             font-weight: bold;
         }
 
-        p {
+        .greeting {
             font-size: 1.5em;
             margin: 5px 0;
-            /* نص أزرق نيون للعبارة الثانية */
-            color: #00f3ff;
+            /* اللون الكريمي مع تأثير نيون خفيف */
+            color: #fdf5e6;
             text-shadow: 
-                0 0 8px #00f3ff,
-                0 0 15px #00b7ff,
-                0 0 25px #0088ff;
-            opacity: 0.95;
+                0 0 8px #fdf5e6,
+                0 0 15px #f5e6c6,
+                0 0 25px #ecd9b4;
+            opacity: 0.98;
+        }
+
+        .second-greeting {
+            font-size: 1.5em;
+            margin: 5px 0;
+            /* نفس اللون الكريمي مع تأثير نيون خفيف */
+            color: #fdf5e6;
+            text-shadow: 
+                0 0 8px #fdf5e6,
+                0 0 15px #f5e6c6,
+                0 0 25px #ecd9b4;
+            opacity: 0.98;
         }
 
         /* =====  أجهزة الموبايل (شاشات عرضها 600px أو أقل) ===== */
@@ -60,17 +71,17 @@
             h1 {
                 font-size: 1.8em;
                 text-shadow: 
-                    0 0 8px #00f3ff,
-                    0 0 15px #00b7ff,
-                    0 0 25px #0088ff;
+                    0 0 8px #00a86b,
+                    0 0 15px #00a86b,
+                    0 0 25px #008f5c;
             }
 
-            p {
+            .greeting, .second-greeting {
                 font-size: 1.2em;
                 text-shadow: 
-                    0 0 5px #00f3ff,
-                    0 0 10px #00b7ff,
-                    0 0 15px #0088ff;
+                    0 0 5px #fdf5e6,
+                    0 0 10px #f5e6c6,
+                    0 0 15px #ecd9b4;
             }
         }
 
@@ -85,7 +96,7 @@
                 font-size: 2.2em;
             }
 
-            p {
+            .greeting, .second-greeting {
                 font-size: 1.4em;
             }
         }
@@ -101,7 +112,7 @@
                 font-size: 2.5em;
             }
 
-            p {
+            .greeting, .second-greeting {
                 font-size: 1.5em;
             }
         }
@@ -110,7 +121,8 @@
 <body>
     <div class="message">
         <h1>مرحبا صديقي احمد</h1>
-        <p>اهلا بك</p>
+        <p class="greeting">اهلا بك</p>
+        <p class="second-greeting">كيف حالك</p>
     </div>
 </body>
 </html>
