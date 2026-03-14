@@ -90,41 +90,54 @@
             position: relative;
         }
 
-        /* النص العلوي بالأسود مع تأثير نيون أسود 10% */
-        .corner-text {
-            text-align: right;
-            font-size: 1.8em;
-            font-weight: bold;
-            color: #000000;
-            text-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-            margin: 0 0 15px 0;
-            padding-bottom: 15px;
-            border-bottom: 3px solid #000000;
+        /* المربع الأسود للنص العلوي والزر */
+        .black-box {
+            background-color: #000000;
+            border-radius: 15px;
+            padding: 20px 25px;
+            margin-bottom: 30px;
+            position: relative;
+            border: 2px solid #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             width: 100%;
+            box-sizing: border-box;
         }
 
-        /* زر Click Here في أقصى اليسار */
-        .click-button {
-            position: absolute;
-            left: 0;
-            top: -25px;
-            background-color: #000000;
+        /* النص العلوي داخل المربع الأسود */
+        .corner-text {
+            font-size: 1.8em;
+            font-weight: bold;
             color: #ffffff;
-            padding: 10px 20px;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+            margin: 0;
+            padding: 0;
+            flex: 1;
+        }
+
+        /* زر Click Here داخل المربع الأسود */
+        .click-button {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 8px 18px;
             border-radius: 25px;
             text-decoration: none;
             font-weight: bold;
             font-size: 1em;
             border: 2px solid #ffffff;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            z-index: 10;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+            margin-left: 15px;
+            white-space: nowrap;
         }
 
         .click-button:hover {
             background-color: #333333;
+            color: #ffffff;
             transform: scale(1.05);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
         }
 
         /* النصوص السفلية مع خط أسود حولها */
@@ -145,12 +158,61 @@
             text-align: right;
         }
 
+        /* حاوية الصورة في أقصى اليسار أسفل المربع الشفاف */
+        .telegram-image-container {
+            position: absolute;
+            left: 20px;
+            bottom: 20px;
+            width: 10%;
+            min-width: 50px;
+            max-width: 80px;
+            z-index: 20;
+        }
+
+        .telegram-link {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .telegram-image {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            border: 2px solid #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .telegram-image:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+        }
+
         @media only screen and (max-width: 600px) {
             .ios-notification { width: 90%; }
+            
+            .black-box {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 15px;
+            }
+            
+            .corner-text {
+                font-size: 1.5em;
+                margin-bottom: 12px;
+            }
+            
             .click-button {
-                padding: 8px 16px;
-                font-size: 0.9em;
-                top: -20px;
+                margin-left: 0;
+                align-self: flex-start;
+            }
+            
+            .telegram-image-container {
+                width: 15%;
+                min-width: 40px;
+                left: 10px;
+                bottom: 10px;
             }
         }
     </style>
@@ -167,8 +229,12 @@
 
     <div class="container">
         <div class="center-texts">
-            <a href="https://t.me/F9XBOT" class="click-button" target="_blank">Click Here</a>
-            <div class="corner-text">• عزيزي اليك اسعار اشتراك البوتات</div>
+            <!-- المربع الأسود الذي يحتوي على النص العلوي وزر Click Here -->
+            <div class="black-box">
+                <div class="corner-text">• عزيزي اليك اسعار اشتراك البوتات</div>
+                <a href="https://t.me/F9XBOT" class="click-button" target="_blank">Click Here</a>
+            </div>
+            
             <div class="prices-container">
                 <div class="greeting">1 شهر = 4$</div>
                 <div class="greeting">2 شهر = 7$</div>
@@ -177,6 +243,13 @@
                 <div class="greeting">5 شهر = 16$</div>
                 <div class="greeting">6 شهر = 19$</div>
             </div>
+        </div>
+        
+        <!-- صورة Telegram في أقصى يسار المربع الشفاف -->
+        <div class="telegram-image-container">
+            <a href="https://t.me/TeamRover" class="telegram-link" target="_blank">
+                <img src="Telegram.jpg" alt="Telegram" class="telegram-image">
+            </a>
         </div>
     </div>
 
