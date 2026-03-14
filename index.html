@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boot prices</title>
+    <title>Boot prices · تحديث الأسعار</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: url('background.jpg') no-repeat center center fixed;
@@ -20,7 +23,7 @@
             overflow-x: hidden;
         }
 
-        /* --- تصميم إشعار الآيفون --- */
+        /* --- إشعار الآيفون --- */
         .ios-notification {
             position: fixed;
             top: -100px;
@@ -80,15 +83,14 @@
             margin-bottom: 30px;
             border: 2px solid #ffffff;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
-            width: 500px;
-            max-width: 90%;
+            width: 650px;          /* أوسع قليلاً لاستيعاب المحتوى الجديد */
+            max-width: 95%;
             box-sizing: border-box;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
-        /* النص العلوي داخل المربع الأسود */
         .corner-text {
             font-size: 1.8em;
             font-weight: bold;
@@ -100,7 +102,6 @@
             text-align: right;
         }
 
-        /* صورة Log2 داخل المربع الأسود */
         .log-image-link {
             display: inline-block;
             margin-left: 15px;
@@ -121,45 +122,51 @@
             box-shadow: 0 6px 15px rgba(255, 255, 255, 0.4);
         }
 
-        /* --- تنسيقات المربع الشفاف --- */
+        /* --- المربع الشفاف (container) --- */
         .container {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
             border-radius: 20px;
-            padding: 50px;
+            padding: 45px 40px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            max-width: 90%;
-            width: 500px;
+            max-width: 95%;
+            width: 650px;          /* متناسق مع العرض الجديد */
             position: relative;
             box-sizing: border-box;
         }
 
-        /* محاذاة جميع النصوص في اليمين */
-        .center-texts {
+        /* حاوية النصوص الأساسية (تعديل لعرض عمودين) */
+        .prices-grid {
+            display: flex;
+            flex-direction: row-reverse;   /* ليبقى النص الأول على اليمين */
+            justify-content: space-between;
+            gap: 30px;
+            margin-top: 5px;
+            flex-wrap: wrap;
             text-align: right;
-            position: relative;
         }
 
-        /* النصوص السفلية مع خط أسود حولها */
-        .greeting {
+        /* كل عمود */
+        .price-column {
+            flex: 1 1 200px;
+            min-width: 150px;
+        }
+
+        .price-item {
             font-size: 1.8em;
             color: #ffffff;
             font-weight: 500;
-            margin: 0;
+            margin: 0 0 10px 0;       /* مسافة بين الأسطر */
             padding: 0;
-            line-height: 1.4;
+            line-height: 1.6;
             text-align: right;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7), -1px -1px 2px rgba(0, 0, 0, 0.7), 1px -1px 2px rgba(0, 0, 0, 0.7), -1px 1px 2px rgba(0, 0, 0, 0.7);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7), -1px -1px 2px rgba(0, 0, 0, 0.7), 
+                         1px -1px 2px rgba(0, 0, 0, 0.7), -1px 1px 2px rgba(0, 0, 0, 0.7);
+            white-space: nowrap;      /* لئلا ينكسر السعر */
         }
 
-        /* الحاوية الداخلية للنصوص السفلية */
-        .prices-container {
-            margin-top: 10px;
-            text-align: right;
-        }
-
-        /* حاوية صورة Telegram في أقصى يسار المربع الشفاف */
+        /* حاوية صورة Telegram (يسار سفلي) */
         .telegram-image-container {
             position: absolute;
             left: 20px;
@@ -190,36 +197,48 @@
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
         }
 
-        @media only screen and (max-width: 600px) {
-            .ios-notification { width: 90%; }
-            
+        /* تكيف مع الشاشات الصغيرة */
+        @media only screen and (max-width: 700px) {
             .outer-black-box {
+                width: 95%;
                 flex-direction: column;
                 align-items: flex-start;
                 padding: 15px;
             }
-            
             .corner-text {
-                font-size: 1.5em;
-                margin-bottom: 12px;
+                font-size: 1.6em;
+                margin-bottom: 10px;
             }
-            
-            .log-image-link {
-                margin-left: 0;
-                align-self: flex-start;
+            .container {
+                width: 95%;
+                padding: 30px 20px;
             }
-            
+            .prices-grid {
+                flex-direction: column;   /* تصبح عمود واحد */
+                gap: 5px;
+            }
+            .price-item {
+                font-size: 1.6em;
+                white-space: normal;
+            }
             .telegram-image-container {
-                width: 15%;
-                min-width: 40px;
+                width: 12%;
+                min-width: 45px;
                 left: 10px;
                 bottom: 10px;
             }
+        }
+
+        @media only screen and (max-width: 480px) {
+            .ios-notification { width: 90%; }
+            .corner-text { font-size: 1.4em; }
+            .price-item { font-size: 1.4em; }
         }
     </style>
 </head>
 <body>
 
+    <!-- إشعار iOS -->
     <div id="iosNotif" class="ios-notification">
         <img src="1000057489.jpg" alt="Logo" class="notif-img">
         <div class="notif-content">
@@ -230,22 +249,33 @@
 
     <!-- المربع الأسود الخارجي -->
     <div class="outer-black-box">
-        <div class="corner-text">~ اسعار البوتات المدفوعه</div>
+        <div class="corner-text">~ اسعار المدفوعه</div>
         <a href="https://t.me/F9XBOT" class="log-image-link" target="_blank">
             <img src="Log2.jpg" alt="Logo" class="log-image">
         </a>
     </div>
 
-    <!-- المربع الشفاف -->
+    <!-- المربع الشفاف (النصوص) -->
     <div class="container">
-        <div class="center-texts">            
-            <div class="prices-container">
-                <div class="greeting">1 شهر = 4$</div>
-                <div class="greeting">2 شهر = 7$</div>
-                <div class="greeting">3 شهر = 10$</div>
-                <div class="greeting">4 شهر = 13$</div>
-                <div class="greeting">5 شهر = 16$</div>
-                <div class="greeting">6 شهر = 19$</div>
+        <!-- شبكة العمودين: الأول 1-6 شهر ، الثاني 7-11 شهر -->
+        <div class="prices-grid">
+            <!-- العمود الأيمن (الأشهر 1-6) -->
+            <div class="price-column">
+                <div class="price-item">1 شهر = 4$</div>
+                <div class="price-item">2 شهر = 7$</div>
+                <div class="price-item">3 شهر = 10$</div>
+                <div class="price-item">4 شهر = 13$</div>
+                <div class="price-item">5 شهر = 16$</div>
+                <div class="price-item">6 شهر = 19$</div>
+            </div>
+            <!-- العمود الأيسر (الأشهر 7-11) مع النقاط كما طلبت -->
+            <div class="price-column">
+                <div class="price-item">• 7 شهر = 22$</div>
+                <div class="price-item">• 8 شهر = 25$</div>
+                <div class="price-item">• 9 شهر = 28$</div>
+                <div class="price-item">• 10 شهر = 31$</div>
+                <div class="price-item">• 11 شهر = 34$</div>
+                <!-- يمكن إضافة 12 شهر إذا أردت، لكن طلبك انتهى عند 11 -->
             </div>
         </div>
         
