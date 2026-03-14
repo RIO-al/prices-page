@@ -4,11 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Boot prices</title>
-
 <style>
-
 *{box-sizing:border-box}
-
 body{
 font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
 background:url('background.jpg') no-repeat center center fixed;
@@ -26,7 +23,6 @@ position:fixed;
 width:100%;
 height:100%;
 }
-
 .ios-notification{
 position:fixed;
 top:-100px;
@@ -35,7 +31,7 @@ transform:translateX(-50%);
 width:320px;
 background:#000;
 border-radius:100px;
-padding:12px;
+padding:12px 18px 12px 25px;
 display:flex;
 align-items:center;
 box-shadow:0 10px 30px rgba(0,0,0,0.4);
@@ -43,23 +39,20 @@ z-index:9999;
 transition:top .6s cubic-bezier(.68,-.55,.27,1.55);
 direction:ltr
 }
-
 .ios-notification.show{top:15px}
-
 .ios-notification div {
 text-align: left;
 width: 100%;
+padding-right: 5px;
 }
-
 .notif-img{
 width:55px;
 height:55px;
 border-radius:50%;
 object-fit:cover;
-margin-right:12px;
+margin-left:18px;
 border:2px solid #fff;
 }
-
 .notif-title{
 font-weight:bold;
 font-size:1.2em;
@@ -67,7 +60,6 @@ color:#fff;
 margin:0;
 display:block
 }
-
 .notif-body{
 font-weight:bold;
 font-size:1em;
@@ -75,7 +67,6 @@ color:#fff;
 margin:2px 0 0 0;
 display:block
 }
-
 .outer-black-box{
 background:#000;
 border-radius:12px;
@@ -89,7 +80,6 @@ display:flex;
 align-items:center;
 justify-content:space-between
 }
-
 .corner-text{
 font-size:1.2em;
 font-weight:bold;
@@ -98,7 +88,6 @@ margin:0;
 flex:1;
 text-align:right
 }
-
 .log-image{
 width:32px;
 height:32px;
@@ -106,7 +95,6 @@ border-radius:50%;
 object-fit:cover;
 border:2px solid #fff
 }
-
 .container{
 background:rgba(255,255,255,.15);
 backdrop-filter:blur(10px);
@@ -118,14 +106,12 @@ width:460px;
 max-width:90%;
 position:relative
 }
-
 .pricing-rows{
 display:flex;
 flex-direction:column;
 gap:4px;
 width:100%
 }
-
 .price-row{
 display:flex;
 justify-content:space-between;
@@ -133,9 +119,7 @@ align-items:center;
 border-bottom:1px dashed rgba(255,255,255,.2);
 padding:4px 0
 }
-
 .price-row:last-child{border-bottom:none}
-
 .right-item,
 .left-item{
 font-size:1.2em;
@@ -144,20 +128,17 @@ font-weight:500;
 white-space:nowrap;
 text-shadow:1px 1px 2px rgba(0,0,0,.7)
 }
-
 .telegram-image-container{
 position:absolute;
 left:12px;
 bottom:-12px;
 width:30px
 }
-
 .telegram-image{
 width:100%;
 border-radius:50%;
 border:2px solid #fff
 }
-
 .pay-btn{
 margin-top:18px;
 background:#000;
@@ -169,20 +150,17 @@ display:inline-block;
 font-size:0.95em;
 box-shadow:0 4px 10px rgba(0,0,0,.4)
 }
-
 .extra-links{
 margin-top:12px;
 border-top:1px solid rgba(255,255,255,.3);
 padding-top:8px;
 font-size:13px
 }
-
 .extra-links span{
 color:#4da3ff;
 cursor:pointer;
 margin:0 6px
 }
-
 .popup{
 display:none;
 position:fixed;
@@ -195,7 +173,6 @@ justify-content:center;
 align-items:center;
 z-index:99999
 }
-
 .popup-box{
 background:#111;
 color:#fff;
@@ -204,7 +181,6 @@ border-radius:15px;
 max-width:320px;
 line-height:1.8
 }
-
 .close-btn{
 margin-top:15px;
 background:#444;
@@ -214,12 +190,9 @@ padding:6px 15px;
 border-radius:10px;
 cursor:pointer
 }
-
 </style>
 </head>
-
 <body>
-
 <div id="iosNotif" class="ios-notification">
 <img src="notice.jpg" class="notif-img">
 <div>
@@ -227,76 +200,56 @@ cursor:pointer
 <span class="notif-body">𝖶𝖾𝗅𝖼𝗈𝗆𝖾 𝖳𝗈 𝖳𝗁𝖾 𝖯𝗋𝗂𝖼𝖾𝗌 𝖯𝖺𝗀𝖾</span>
 </div>
 </div>
-
 <div class="outer-black-box">
 <div class="corner-text">اسعار البوت المدفوع</div>
 <img src="$.jpg" class="log-image">
 </div>
-
 <div class="container">
-
 <div class="pricing-rows">
-
 <div class="price-row">
 <div class="right-item">1 شهر = 4$</div>
 <div class="left-item">7 شهر = 22$</div>
 </div>
-
 <div class="price-row">
 <div class="right-item">2 شهر = 7$</div>
 <div class="left-item">8 شهر = 25$</div>
 </div>
-
 <div class="price-row">
 <div class="right-item">3 شهر = 10$</div>
 <div class="left-item">9 شهر = 28$</div>
 </div>
-
 <div class="price-row">
 <div class="right-item">4 شهر = 13$</div>
 <div class="left-item">10 شهر = 31$</div>
 </div>
-
 <div class="price-row">
 <div class="right-item">5 شهر = 16$</div>
 <div class="left-item">11 شهر = 34$</div>
 </div>
-
 <div class="price-row">
 <div class="right-item">6 شهر = 19$</div>
 <div class="left-item">12 شهر = 37$</div>
 </div>
-
 </div>
-
 <div class="extra-links">
 <span onclick="showFeatures()">مميزات البوت المدفوع</span>
 |
 <span onclick="showPayments()">مشاهده طرق الدفع</span>
 </div>
-
 <div class="telegram-image-container">
 <img src="Telegram.jpg" class="telegram-image">
 </div>
-
 </div>
-
 <a href="https://t.me/F9XBOT" class="pay-btn">اضغط هنا لأستكمال عمليه الدفع</a>
-
-
 <div id="popup" class="popup">
 <div class="popup-box" id="popupContent"></div>
 </div>
-
-
 <script>
-
 window.onload=function(){
 const notif=document.getElementById("iosNotif")
 setTimeout(()=>{notif.classList.add("show")},1000)
 setTimeout(()=>{notif.classList.remove("show")},11000)
 }
-
 function showPayments(){
 document.getElementById("popup").style.display="flex"
 document.getElementById("popupContent").innerHTML=`
@@ -307,7 +260,6 @@ document.getElementById("popupContent").innerHTML=`
 <button class="close-btn" onclick="closePopup()">اغلاق</button>
 `
 }
-
 function showFeatures(){
 document.getElementById("popup").style.display="flex"
 document.getElementById("popupContent").innerHTML=`
@@ -317,12 +269,9 @@ document.getElementById("popupContent").innerHTML=`
 <button class="close-btn" onclick="closePopup()">اغلاق</button>
 `
 }
-
 function closePopup(){
 document.getElementById("popup").style.display="none"
 }
-
 </script>
-
 </body>
 </html>
