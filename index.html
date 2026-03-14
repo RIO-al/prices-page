@@ -7,8 +7,7 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* استخدمت الصورة التي ارفقتها كخلفية */
-            background: url('1000057501.jpg') no-repeat center center fixed;
+            background: url('1000057477.jpg') no-repeat center center fixed;
             background-size: cover;
             min-height: 100vh;
             margin: 0;
@@ -23,7 +22,7 @@
         /* --- تصميم إشعار الآيفون --- */
         .ios-notification {
             position: fixed;
-            top: -100px;
+            top: -100px; /* يبدأ خارج الشاشة من الأعلى */
             left: 50%;
             transform: translateX(-50%);
             width: 350px;
@@ -36,17 +35,17 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             z-index: 9999;
             transition: top 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-            direction: ltr;
+            direction: ltr; /* لضمان تنسيق أيقونة الآيفون يميناً ويساراً */
         }
 
         .ios-notification.show {
-            top: 20px;
+            top: 20px; /* ينزل للأسفل عند التفعيل */
         }
 
         .notif-img {
             width: 50px;
             height: 50px;
-            border-radius: 50%;
+            border-radius: 50%; /* جعل الصورة دائرية */
             object-fit: cover;
             margin-right: 15px;
         }
@@ -72,41 +71,34 @@
             display: block;
         }
 
-        /* --- تنسيق النص الأرجواني المتوهج (Neon) --- */
-        .corner-text {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 1.6em;
-            font-weight: bold;
-            /* لون فاتح لمركز النص */
-            color: #f3e5f5; 
-            /* طبقات الظل لخلق تأثير النيون الأرجواني */
-            text-shadow: 
-                0 0 7px #fff,
-                0 0 10px #bf55ec,
-                0 0 21px #bf55ec,
-                0 0 42px #9b59b6,
-                0 0 82px #9b59b6;
-            animation: blink 2s infinite;
-        }
-
-        /* --- محتوى الأسعار --- */
+        /* --- بقية تنسيقات الصفحة الأصلية --- */
         .container {
-            background: rgba(0, 0, 0, 0.3); /* تغميق الخلفية قليلاً لإبراز النص */
-            backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 50px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             max-width: 90%;
             width: 500px;
             position: relative;
         }
 
+        /* النص البنفسجي النيون */
+        .corner-text {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #aa00ff; /* اللون البنفسجي الأساسي */
+            text-shadow: 0 0 5px #d500ff, 0 0 10px #d500ff, 0 0 15px #aa00ff, 0 0 20px #aa00ff; /* تأثير النيون */
+            animation: blink 2s infinite;
+        }
+
         @keyframes blink {
             0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; } /* جعل الوميض أخف ليحافظ على توهج النيون */
+            50% { opacity: 0; }
         }
 
         .greeting {
@@ -114,12 +106,10 @@
             margin: 15px 0;
             color: #ffffff;
             font-weight: 500;
-            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
         }
 
         @media only screen and (max-width: 600px) {
             .ios-notification { width: 90%; }
-            .corner-text { font-size: 1.2em; top: 10px; left: 10px; }
         }
     </style>
 </head>
@@ -149,15 +139,15 @@
         window.onload = function() {
             const notif = document.getElementById('iosNotif');
             
-            // إظهار الإشعار بعد ثانية
+            // إظهار الإشعار بعد ثانية من دخول الموقع
             setTimeout(() => {
                 notif.classList.add('show');
             }, 1000);
 
-            // إخفاء الإشعار بعد 50 ثانية
+            // إخفاء الإشعار بعد 50 ثانية (50000 مللي ثانية)
             setTimeout(() => {
                 notif.classList.remove('show');
-            }, 51000);
+            }, 51000); // أضفت ثانية إضافية لضمان بقاءه 50 ثانية كاملة وهو ظاهر
         };
     </script>
 
