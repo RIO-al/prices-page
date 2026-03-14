@@ -19,95 +19,114 @@
             direction: rtl;
         }
 
-        .message {
-            padding: 20px;
+        .container {
+            background: rgba(255, 255, 255, 0.15); /* خلفية شفافة */
+            backdrop-filter: blur(10px); /* تأثير ضبابي خلف المربع */
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             max-width: 90%;
+            width: 500px; /* حجم متوسط للمربع */
+            position: relative;
         }
 
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            /* اللون الفضي */
-            color: #c0c0c0;
+        /* نص الزاوية اليسرى - مع تأثير الوميض */
+        .corner-text {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 1.8em;
             font-weight: bold;
+            color: #1a1a1a; /* اسود لامع */
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            margin: 0;
+            /* تأثير الوميض (اختفاء وظهور) */
+            animation: blink 2s infinite;
+        }
+
+        /* أنميشن الوميض */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* النصوص في وسط المربع */
+        .center-texts {
+            text-align: center;
+            margin-top: 40px; /* مسافة كافية تحت النص العلوي */
         }
 
         .greeting {
-            font-size: 1.5em;
-            margin: 5px 0;
-            /* اللون الأبيض */
-            color: #ffffff;
-        }
-
-        .second-greeting {
-            font-size: 1.5em;
-            margin: 5px 0;
-            /* اللون الأبيض */
-            color: #ffffff;
-        }
-
-        .third-greeting {
-            font-size: 1.5em;
-            margin: 5px 0;
-            /* اللون الأبيض */
-            color: #ffffff;
+            font-size: 1.8em;
+            margin: 15px 0;
+            color: #ffffff; /* ابيض */
+            font-weight: 500;
         }
 
         /* =====  أجهزة الموبايل (شاشات عرضها 600px أو أقل) ===== */
         @media only screen and (max-width: 600px) {
-            .message {
+            .container {
                 width: 85%;
-                padding: 15px;
+                padding: 30px;
             }
 
-            h1 {
-                font-size: 1.8em;
+            .corner-text {
+                font-size: 1.4em;
+                top: 15px;
+                left: 15px;
             }
 
-            .greeting, .second-greeting, .third-greeting {
-                font-size: 1.2em;
+            .greeting {
+                font-size: 1.4em;
+                margin: 10px 0;
             }
         }
 
         /* =====  أجهزة الآيباد والأجهزة اللوحية (شاشات بين 601px و 1024px) ===== */
         @media only screen and (min-width: 601px) and (max-width: 1024px) {
-            .message {
+            .container {
                 width: 70%;
-                padding: 18px;
+                padding: 40px;
             }
 
-            h1 {
-                font-size: 2.2em;
+            .corner-text {
+                font-size: 1.6em;
             }
 
-            .greeting, .second-greeting, .third-greeting {
-                font-size: 1.4em;
+            .greeting {
+                font-size: 1.6em;
             }
         }
 
         /* =====  أجهزة الحاسوب (شاشات عرضها 1025px أو أكثر) ===== */
         @media only screen and (min-width: 1025px) {
-            .message {
-                width: auto;
-                padding: 20px;
+            .container {
+                width: 500px;
+                padding: 50px;
             }
 
-            h1 {
-                font-size: 2.5em;
+            .corner-text {
+                font-size: 1.8em;
             }
 
-            .greeting, .second-greeting, .third-greeting {
-                font-size: 1.5em;
+            .greeting {
+                font-size: 1.8em;
             }
         }
     </style>
 </head>
 <body>
-    <div class="message">
-        <h1>مرحبا صديقي احمد</h1>
-        <p class="greeting">اهلا بك</p>
-        <p class="second-greeting">كيف حالك</p>
-        <p class="third-greeting">هل انت بخير ؟</p>
+    <div class="container">
+        <!-- نص الزاوية اليسرى مع تأثير الوميض -->
+        <div class="corner-text">مرحبا صديقي احمد</div>
+        
+        <!-- النصوص في الوسط -->
+        <div class="center-texts">
+            <div class="greeting">اهلا بك</div>
+            <div class="greeting">كيف حالك</div>
+            <div class="greeting">هل انت بخير ؟</div>
+        </div>
     </div>
 </body>
 </html>
