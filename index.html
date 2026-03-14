@@ -7,14 +7,15 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: url('1000057477.jpg') no-repeat center center fixed;
+            /* استخدمت الصورة التي ارفقتها كخلفية */
+            background: url('1000057501.jpg') no-repeat center center fixed;
             background-size: cover;
             min-height: 100vh;
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            text-align: right; /* تغيير النص ليكون في اليمين */
+            text-align: center;
             direction: rtl;
             overflow-x: hidden;
         }
@@ -71,69 +72,54 @@
             display: block;
         }
 
-        /* --- تنسيقات الصفحة الرئيسية --- */
+        /* --- تنسيق النص الأرجواني المتوهج (Neon) --- */
+        .corner-text {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 1.6em;
+            font-weight: bold;
+            /* لون فاتح لمركز النص */
+            color: #f3e5f5; 
+            /* طبقات الظل لخلق تأثير النيون الأرجواني */
+            text-shadow: 
+                0 0 7px #fff,
+                0 0 10px #bf55ec,
+                0 0 21px #bf55ec,
+                0 0 42px #9b59b6,
+                0 0 82px #9b59b6;
+            animation: blink 2s infinite;
+        }
+
+        /* --- محتوى الأسعار --- */
         .container {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.3); /* تغميق الخلفية قليلاً لإبراز النص */
+            backdrop-filter: blur(15px);
             border-radius: 20px;
-            padding: 40px 30px 30px 30px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 50px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             max-width: 90%;
             width: 500px;
             position: relative;
-            text-align: right; /* محاذاة النص لليمين داخل الحاوية */
         }
 
-        /* النص العلوي - بدون حركة */
-        .corner-text {
-            font-size: 1.8em;
-            font-weight: bold;
-            color: #1a1a1a;
-            margin: 0 0 5px 0; /* إزالة المسافات العلوية وإضافة مسافة صغيرة أسفل */
-            text-align: right;
-            display: block;
-            width: 100%;
-        }
-
-        /* الفاصل - أسفل النص العلوي مباشرة */
-        .divider {
-            width: 100%;
-            height: 2px;
-            background-color: rgba(255, 255, 255, 0.7);
-            margin: 5px 0 20px 0; /* 5px فوق (أسفل النص) و 20px تحت (فوق الأسعار) */
-            border-radius: 2px;
-        }
-
-        /* حاوية الأسعار - كلها في اليمين */
-        .prices-container {
-            text-align: right;
-            width: 100%;
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; } /* جعل الوميض أخف ليحافظ على توهج النيون */
         }
 
         .greeting {
             font-size: 1.8em;
-            margin: 0;
-            padding: 0;
+            margin: 15px 0;
             color: #ffffff;
             font-weight: 500;
-            line-height: 1.3;
-            text-align: right;
-            display: block;
-            width: 100%;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
         }
 
         @media only screen and (max-width: 600px) {
             .ios-notification { width: 90%; }
-            .corner-text { 
-                font-size: 1.3em; 
-            }
-            .greeting {
-                font-size: 1.4em;
-            }
-            .container {
-                padding: 30px 20px 20px 20px;
-            }
+            .corner-text { font-size: 1.2em; top: 10px; left: 10px; }
         }
     </style>
 </head>
@@ -148,14 +134,8 @@
     </div>
 
     <div class="container">
-        <!-- نص العنوان في الأعلى على اليمين -->
         <div class="corner-text">• عزيزي اليك اسعار اشتراك البوتات</div>
-        
-        <!-- فاصل أفقي أسفل النص مباشرة (بدون مسافة) -->
-        <div class="divider"></div>
-        
-        <!-- نصوص الأسعار في اليمين بدون تباعد بينها -->
-        <div class="prices-container">
+        <div class="center-texts">
             <div class="greeting">1 شهر = 4$</div>
             <div class="greeting">2 شهر = 7$</div>
             <div class="greeting">3 شهر = 10$</div>
@@ -169,10 +149,12 @@
         window.onload = function() {
             const notif = document.getElementById('iosNotif');
             
+            // إظهار الإشعار بعد ثانية
             setTimeout(() => {
                 notif.classList.add('show');
             }, 1000);
 
+            // إخفاء الإشعار بعد 50 ثانية
             setTimeout(() => {
                 notif.classList.remove('show');
             }, 51000);
