@@ -12,6 +12,7 @@
             min-height: 100vh;
             margin: 0;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
@@ -71,39 +72,20 @@
             display: block;
         }
 
-        /* --- تنسيقات الصفحة الرئيسية --- */
-        .container {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 50px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            max-width: 90%;
-            width: 500px;
-            position: relative;
-        }
-
-        /* محاذاة جميع النصوص في اليمين */
-        .center-texts {
-            text-align: right;
-            position: relative;
-        }
-
-        /* المربع الأسود للنص العلوي والزر */
-        .black-box {
+        /* --- المربع الأسود الخارجي --- */
+        .outer-black-box {
             background-color: #000000;
             border-radius: 15px;
-            padding: 20px 25px;
+            padding: 20px 30px;
             margin-bottom: 30px;
-            position: relative;
             border: 2px solid #ffffff;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+            width: 500px;
+            max-width: 90%;
+            box-sizing: border-box;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            width: 100%;
-            box-sizing: border-box;
         }
 
         /* النص العلوي داخل المربع الأسود */
@@ -115,29 +97,48 @@
             margin: 0;
             padding: 0;
             flex: 1;
+            text-align: right;
         }
 
-        /* زر Click Here داخل المربع الأسود */
-        .click-button {
-            background-color: #ffffff;
-            color: #000000;
-            padding: 8px 18px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1em;
+        /* صورة Log2 داخل المربع الأسود */
+        .log-image-link {
+            display: inline-block;
+            margin-left: 15px;
+        }
+
+        .log-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
             border: 2px solid #ffffff;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
-            margin-left: 15px;
-            white-space: nowrap;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
         }
 
-        .click-button:hover {
-            background-color: #333333;
-            color: #ffffff;
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
+        .log-image:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(255, 255, 255, 0.4);
+        }
+
+        /* --- تنسيقات المربع الشفاف --- */
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 90%;
+            width: 500px;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        /* محاذاة جميع النصوص في اليمين */
+        .center-texts {
+            text-align: right;
+            position: relative;
         }
 
         /* النصوص السفلية مع خط أسود حولها */
@@ -158,7 +159,7 @@
             text-align: right;
         }
 
-        /* حاوية الصورة في أقصى اليسار أسفل المربع الشفاف */
+        /* حاوية صورة Telegram في أقصى يسار المربع الشفاف */
         .telegram-image-container {
             position: absolute;
             left: 20px;
@@ -192,7 +193,7 @@
         @media only screen and (max-width: 600px) {
             .ios-notification { width: 90%; }
             
-            .black-box {
+            .outer-black-box {
                 flex-direction: column;
                 align-items: flex-start;
                 padding: 15px;
@@ -203,7 +204,7 @@
                 margin-bottom: 12px;
             }
             
-            .click-button {
+            .log-image-link {
                 margin-left: 0;
                 align-self: flex-start;
             }
@@ -227,14 +228,17 @@
         </div>
     </div>
 
+    <!-- المربع الأسود الخارجي -->
+    <div class="outer-black-box">
+        <div class="corner-text">• عزيزي اليك اسعار اشتراك البوتات</div>
+        <a href="https://t.me/F9XBOT" class="log-image-link" target="_blank">
+            <img src="Log2.jpg" alt="Logo" class="log-image">
+        </a>
+    </div>
+
+    <!-- المربع الشفاف -->
     <div class="container">
-        <div class="center-texts">
-            <!-- المربع الأسود الذي يحتوي على النص العلوي وزر Click Here -->
-            <div class="black-box">
-                <div class="corner-text">• عزيزي اليك اسعار اشتراك البوتات</div>
-                <a href="https://t.me/F9XBOT" class="click-button" target="_blank">Click Here</a>
-            </div>
-            
+        <div class="center-texts">            
             <div class="prices-container">
                 <div class="greeting">1 شهر = 4$</div>
                 <div class="greeting">2 شهر = 7$</div>
