@@ -76,7 +76,7 @@
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
             border-radius: 20px;
-            padding: 50px;
+            padding: 50px 50px 30px 50px; /* تقليل الحواف السفلية */
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.2);
             max-width: 90%;
@@ -84,30 +84,50 @@
             position: relative;
         }
 
+        /* تعديل النص العلوي - ثابت في الأعلى يميناً */
         .corner-text {
             position: absolute;
             top: 20px;
-            left: 20px;
+            right: 20px; /* تغيير من left إلى right */
             font-size: 1.8em;
             font-weight: bold;
             color: #1a1a1a;
-            animation: blink 2s infinite;
+            /* إزالة خاصية الأنيميشن */
+            /* animation: blink 2s infinite; */
         }
 
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+        /* فاصل بين النص العلوي والأسعار */
+        .divider {
+            width: 80%;
+            height: 2px;
+            background-color: rgba(255, 255, 255, 0.5);
+            margin: 60px auto 0 auto; /* تباعد عن النص العلوي */
+            border-radius: 2px;
+        }
+
+        /* حاوية الأسعار مع تباعد بسيط جداً بين الأسطر */
+        .prices-container {
+            margin-top: 20px;
+            line-height: 1.2; /* تقليل المسافة بين الأسطر */
         }
 
         .greeting {
             font-size: 1.8em;
-            margin: 15px 0;
+            /* إزالة الـ margin التي تسبب تباعد */
+            margin: 0;
             color: #ffffff;
             font-weight: 500;
+            /* إضافة مسافة بسيطة جداً بين الأسطر إذا لزم الأمر */
+            line-height: 1.3;
         }
 
         @media only screen and (max-width: 600px) {
             .ios-notification { width: 90%; }
+            .corner-text { 
+                font-size: 1.3em; 
+                right: 10px;
+                top: 10px;
+            }
         }
     </style>
 </head>
@@ -122,8 +142,14 @@
     </div>
 
     <div class="container">
+        <!-- نص العنوان في الأعلى على اليمين -->
         <div class="corner-text">• عزيزي اليك اسعار اشتراك البوتات</div>
-        <div class="center-texts">
+        
+        <!-- فاصل أفقي -->
+        <div class="divider"></div>
+        
+        <!-- نصوص الأسعار بدون تباعد بينها -->
+        <div class="prices-container">
             <div class="greeting">1 شهر = 4$</div>
             <div class="greeting">2 شهر = 7$</div>
             <div class="greeting">3 شهر = 10$</div>
