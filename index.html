@@ -7,7 +7,6 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* إضافة الصورة كخلفية */
             background: url('1000057477.jpg') no-repeat center center fixed;
             background-size: cover;
             min-height: 100vh;
@@ -17,129 +16,148 @@
             align-items: center;
             text-align: center;
             direction: rtl;
+            overflow-x: hidden;
         }
 
+        /* --- تصميم إشعار الآيفون --- */
+        .ios-notification {
+            position: fixed;
+            top: -100px; /* يبدأ خارج الشاشة من الأعلى */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 350px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 9999;
+            transition: top 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            direction: ltr; /* لضمان تنسيق أيقونة الآيفون */
+        }
+
+        .ios-notification.show {
+            top: 20px; /* ينزل للأسفل عند التفعيل */
+        }
+
+        .notif-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%; /* جعل الصورة دائرية */
+            object-fit: cover;
+            margin-left: 15px; /* جعل المسافة على اليسار لتصبح الصورة على اليمين */
+            margin-right: 0; /* إزالة المسافة من اليمين */
+            order: 2; /* جعل الصورة تظهر بعد النص */
+        }
+
+        .notif-content {
+            flex-grow: 1;
+            text-align: right; /* محاذاة النص لليمين */
+            direction: rtl; /* اتجاه النص من اليمين لليسار */
+        }
+
+        .notif-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #000;
+            margin: 0;
+            display: block;
+        }
+
+        .notif-body {
+            font-weight: bold;
+            font-size: 0.85em;
+            color: #333;
+            margin: 2px 0 0 0;
+            display: block;
+        }
+
+        /* --- بقية تنسيقات الصفحة الأصلية --- */
         .container {
-            background: rgba(255, 255, 255, 0.15); /* خلفية شفافة */
-            backdrop-filter: blur(10px); /* تأثير ضبابي خلف المربع */
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 50px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.2);
             max-width: 90%;
-            width: 500px; /* حجم متوسط للمربع */
+            width: 500px;
             position: relative;
+            text-align: right; /* محاذاة النص داخل الحاوية لليمين بشكل عام */
         }
 
-        /* نص الزاوية اليمنى - بدون وميض */
         .corner-text {
             position: absolute;
             top: 20px;
-            right: 20px;
+            right: 20px; /* وضع النص في أعلى اليمين */
+            left: auto; /* إلغاء الخاصية left */
             font-size: 1.8em;
             font-weight: bold;
-            color: #1a1a1a; /* اسود لامع */
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-            margin: 0;
+            color: #1a1a1a; /* لون أسود داكن */
+            text-shadow: none; /* إزالة أي تأثير وهج */
+            animation: none; /* إلغاء تأثير الوميض */
         }
 
-        /* النصوص في وسط المربع */
+        /* إزالة تأثير الوميض نهائياً */
+        @keyframes blink {
+            /* تم إلغاء التأثير بعدم استخدامه */
+        }
+
         .center-texts {
-            text-align: center;
-            margin-top: 70px; /* تباعد بين النص العلوي والنصوص الثلاثة */
+            margin-top: 60px; /* تباعد بين النص العلوي والنصوص الترحيبية */
         }
 
         .greeting {
             font-size: 1.8em;
-            margin: 0; /* إزالة التباعد بين النصوص */
-            padding: 0; /* إزالة أي حشو داخلي */
-            line-height: 1; /* جعل الخط متلاصق بشكل أكبر */
-            color: #ffffff; /* ابيض */
+            margin: 0; /* إزالة التباعد العمودي بين النصوص */
+            padding: 0;
+            line-height: 1.2; /* تحسين القراءة مع تقليل المسافات */
+            color: #ffffff; /* لون أبيض */
             font-weight: 500;
+            text-align: right; /* محاذاة النصوص لليمين */
         }
 
-        /* =====  أجهزة الموبايل (شاشات عرضها 600px أو أقل) ===== */
         @media only screen and (max-width: 600px) {
-            .container {
-                width: 85%;
-                padding: 30px;
-            }
-
-            .corner-text {
-                font-size: 1.4em;
-                top: 15px;
-                right: 15px;
-            }
-
-            .greeting {
-                font-size: 1.4em;
-                margin: 0;
-                line-height: 1;
-            }
-
-            .center-texts {
-                margin-top: 50px;
-            }
-        }
-
-        /* =====  أجهزة الآيباد والأجهزة اللوحية (شاشات بين 601px و 1024px) ===== */
-        @media only screen and (min-width: 601px) and (max-width: 1024px) {
-            .container {
-                width: 70%;
-                padding: 40px;
-            }
-
-            .corner-text {
-                font-size: 1.6em;
-                right: 20px;
-            }
-
-            .greeting {
-                font-size: 1.6em;
-                margin: 0;
-                line-height: 1;
-            }
-
-            .center-texts {
-                margin-top: 60px;
-            }
-        }
-
-        /* =====  أجهزة الحاسوب (شاشات عرضها 1025px أو أكثر) ===== */
-        @media only screen and (min-width: 1025px) {
-            .container {
-                width: 500px;
-                padding: 50px;
-            }
-
-            .corner-text {
-                font-size: 1.8em;
-                right: 20px;
-            }
-
-            .greeting {
-                font-size: 1.8em;
-                margin: 0;
-                line-height: 1;
-            }
-
-            .center-texts {
-                margin-top: 70px;
-            }
+            .ios-notification { width: 90%; }
         }
     </style>
 </head>
 <body>
+
+    <div id="iosNotif" class="ios-notification">
+        <img src="1000057489.jpg" alt="Logo" class="notif-img">
+        <div class="notif-content">
+            <span class="notif-title">TeamRo</span>
+            <span class="notif-body">Hi, My Friend</span>
+        </div>
+    </div>
+
     <div class="container">
-        <!-- نص الزاوية اليمنى بدون تأثير وميض -->
         <div class="corner-text">TEᗩᗰ ᖇOᐯEᖇ</div>
-        
-        <!-- النصوص في الوسط ملتصقة ببعضها البعض -->
         <div class="center-texts">
             <div class="greeting">اهلا بك</div>
             <div class="greeting">كيف حالك</div>
             <div class="greeting">هل انت بخير ؟</div>
         </div>
     </div>
+
+    <script>
+        window.onload = function() {
+            const notif = document.getElementById('iosNotif');
+            
+            // إظهار الإشعار بعد ثانية من دخول الموقع
+            setTimeout(() => {
+                notif.classList.add('show');
+            }, 1000);
+
+            // إخفاء الإشعار بعد 50 ثانية (50000 مللي ثانية)
+            setTimeout(() => {
+                notif.classList.remove('show');
+            }, 51000); // أضفت ثانية إضافية لضمان بقاءه 50 ثانية كاملة وهو ظاهر
+        };
+    </script>
+
 </body>
 </html>
