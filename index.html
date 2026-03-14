@@ -89,32 +89,34 @@
             text-align: right;
         }
 
-        /* النص العلوي البنفسجي بدون نيون */
+        /* النص العلوي البنفسجي مع خط أسود حوله */
         .corner-text {
             text-align: right;
             font-size: 1.8em;
             font-weight: bold;
-            color: #aa00ff; /* اللون البنفسجي فقط بدون نيون */
-            margin: 0 0 15px 0; /* مسافة من الأسفل قبل الخط */
-            padding-bottom: 15px; /* مسافة داخلية قبل الخط */
-            border-bottom: 3px solid #aa00ff; /* خط فاصل بنفسجي */
+            color: #aa00ff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5), -1px -1px 2px rgba(0, 0, 0, 0.5), 1px -1px 2px rgba(0, 0, 0, 0.5), -1px 1px 2px rgba(0, 0, 0, 0.5); /* خط أسود ضعيف حول النص */
+            margin: 0 0 15px 0;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #aa00ff;
             width: 100%;
         }
 
-        /* إزالة التباعد بين النصوص السفلية */
+        /* النصوص السفلية مع خط أسود حولها */
         .greeting {
             font-size: 1.8em;
             color: #ffffff;
             font-weight: 500;
-            margin: 0; /* إزالة التباعد الخارجي */
-            padding: 0; /* إزالة التباعد الداخلي */
-            line-height: 1.4; /* تحسين القراءة مع إبقاء النصوص متقاربة */
+            margin: 0;
+            padding: 0;
+            line-height: 1.4;
             text-align: right;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7), -1px -1px 2px rgba(0, 0, 0, 0.7), 1px -1px 2px rgba(0, 0, 0, 0.7), -1px 1px 2px rgba(0, 0, 0, 0.7); /* خط أسود أقوى قليلاً للنصوص البيضاء */
         }
 
         /* الحاوية الداخلية للنصوص السفلية */
         .prices-container {
-            margin-top: 10px; /* مسافة بسيطة بعد الخط */
+            margin-top: 10px;
             text-align: right;
         }
 
