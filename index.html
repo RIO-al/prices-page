@@ -193,14 +193,14 @@
             font-weight: bold;
         }
 
-        /* حاوية صورة Telegram (يسار سفلي) */
+        /* حاوية صورة Telegram (يسار سفلي) - تصغير وتنزيل أكثر */
         .telegram-image-container {
             position: absolute;
-            left: 20px;
-            bottom: 0px;  /* نزلها لأقصى حد */
-            width: 8%;    /* صغرها أكثر */
-            min-width: 40px;  /* حجم أصغر */
-            max-width: 70px;  /* حجم أصغر */
+            left: 15px;
+            bottom: -5px;  /* تنزيل أكثر من الحافة */
+            width: 6%;     /* تصغير أكثر */
+            min-width: 30px;  /* حجم أصغر */
+            max-width: 50px;  /* حجم أصغر */
             z-index: 20;
         }
 
@@ -258,10 +258,10 @@
                 margin-right: 20px;
             }
             .telegram-image-container {
-                width: 12%;     /* أصغر للشاشات الصغيرة */
-                min-width: 35px;  /* أصغر */
-                left: 10px;
-                bottom: 0px;    /* نزلها لأقصى حد */
+                width: 8%;     /* أصغر */
+                min-width: 25px;  /* أصغر */
+                left: 8px;
+                bottom: -5px;  /* تنزيل أكثر */
             }
         }
 
@@ -270,8 +270,9 @@
             .corner-text { font-size: 1.4em; }
             .right-item, .left-item { font-size: 1.4em; }
             .telegram-image-container {
-                width: 10%;
-                min-width: 30px;
+                width: 7%;
+                min-width: 22px;
+                bottom: -5px;
             }
         }
     </style>
@@ -331,7 +332,7 @@
             </div>
         </div>
         
-        <!-- صورة Telegram في أقصى يسار المربع الشفاف -->
+        <!-- صورة Telegram في أقصى يسار المربع الشفاف - مصغرة ومنزلة أكثر -->
         <div class="telegram-image-container">
             <a href="https://t.me/TeamRover" class="telegram-link" target="_blank">
                 <img src="Telegram.jpg" alt="Telegram" class="telegram-image">
