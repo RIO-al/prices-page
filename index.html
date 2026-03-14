@@ -1,358 +1,267 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boot prices • تصميم الصفوف المزدوجة</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: url('background.jpg') no-repeat center center fixed;
-            background-size: cover;
-            min-height: 100vh;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            direction: rtl;
-            overflow-x: hidden;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boot prices • تصميم الصفوف المزدوجة</title>
 
-        /* --- إشعار الآيفون --- */
-        .ios-notification {
-            position: fixed;
-            top: -100px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 350px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(15px);
-            border-radius: 25px;
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            z-index: 9999;
-            transition: top 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-            direction: ltr;
-        }
+<style>
 
-        .ios-notification.show {
-            top: 20px;
-        }
+*{box-sizing:border-box}
 
-        .notif-img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 15px;
-        }
+body{
+font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+background:url('background.jpg') no-repeat center center fixed;
+background-size:cover;
+min-height:100vh;
+margin:0;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+direction:rtl;
+overflow-x:hidden
+}
 
-        .notif-content {
-            flex-grow: 1;
-            text-align: left;
-        }
+/* إشعار iOS */
+.ios-notification{
+position:fixed;
+top:-100px;
+left:50%;
+transform:translateX(-50%);
+width:300px;
+background:rgba(255,255,255,0.95);
+backdrop-filter:blur(15px);
+border-radius:20px;
+padding:10px;
+display:flex;
+align-items:center;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+z-index:9999;
+transition:top .6s cubic-bezier(.68,-.55,.27,1.55);
+direction:ltr
+}
 
-        .notif-title {
-            font-weight: bold;
-            font-size: 1.1em;
-            color: #000;
-            margin: 0;
-            display: block;
-        }
+.ios-notification.show{top:15px}
 
-        .notif-body {
-            font-weight: bold;
-            font-size: 0.85em;
-            color: #333;
-            margin: 2px 0 0 0;
-            display: block;
-        }
+.notif-img{
+width:40px;
+height:40px;
+border-radius:50%;
+object-fit:cover;
+margin-right:10px
+}
 
-        /* --- المربع الأسود الخارجي --- */
-        .outer-black-box {
-            background-color: #000000;
-            border-radius: 15px;
-            padding: 20px 30px;
-            margin-bottom: 30px;
-            border: 2px solid #ffffff;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
-            width: 700px;
-            max-width: 95%;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+.notif-title{
+font-weight:bold;
+font-size:1em;
+color:#000;
+margin:0;
+display:block
+}
 
-        .corner-text {
-            font-size: 1.8em;
-            font-weight: bold;
-            color: #ffffff;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-            margin: 0;
-            padding: 0;
-            flex: 1;
-            text-align: right;
-        }
+.notif-body{
+font-weight:bold;
+font-size:.8em;
+color:#333;
+margin:2px 0 0 0;
+display:block
+}
 
-        .log-image-link {
-            display: inline-block;
-            margin-left: 15px;
-        }
+/* المربع الأسود */
+.outer-black-box{
+background:#000;
+border-radius:12px;
+padding:12px 20px;
+margin-bottom:20px;
+border:2px solid #fff;
+box-shadow:0 4px 20px rgba(0,0,0,.7);
+width:520px;
+max-width:92%;
+display:flex;
+align-items:center;
+justify-content:space-between
+}
 
-        .log-image {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #ffffff;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
-        }
+.corner-text{
+font-size:1.4em;
+font-weight:bold;
+color:#fff;
+margin:0;
+flex:1;
+text-align:right
+}
 
-        .log-image:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 15px rgba(255, 255, 255, 0.4);
-        }
+.log-image{
+width:40px;
+height:40px;
+border-radius:50%;
+object-fit:cover;
+border:2px solid #fff
+}
 
-        /* --- المربع الشفاف (container) --- */
-        .container {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 45px 45px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            max-width: 95%;
-            width: 700px;
-            position: relative;
-            box-sizing: border-box;
-        }
+/* المربع الشفاف */
+.container{
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(10px);
+border-radius:16px;
+padding:25px 30px;
+box-shadow:0 8px 32px rgba(0,0,0,.3);
+border:1px solid rgba(255,255,255,.2);
+width:520px;
+max-width:92%;
+position:relative
+}
 
-        /* الحاوية الرئيسية للنصوص (ستعمل كشبكة صفوف) */
-        .pricing-rows {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            width: 100%;
-        }
+/* الصفوف */
+.pricing-rows{
+display:flex;
+flex-direction:column;
+gap:8px;
+width:100%
+}
 
-        /* كل صف يحتوي على عمودين (يمين + يسار) */
-        .price-row {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            text-align: right;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
-            padding-bottom: 5px;
-        }
-        /* آخر صف لا يحتاج خط */
-        .price-row:last-child {
-            border-bottom: none;
-        }
+.price-row{
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:1px dashed rgba(255,255,255,.2);
+padding:6px 0
+}
 
-        /* النص في الجانب الأيمن (الأشهر القليلة) */
-        .right-item {
-            font-size: 1.8em;
-            color: #ffffff;
-            font-weight: 500;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7), -1px -1px 2px rgba(0, 0, 0, 0.7), 
-                         1px -1px 2px rgba(0, 0, 0, 0.7), -1px 1px 2px rgba(0, 0, 0, 0.7);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            white-space: nowrap;
-        }
+.price-row:last-child{border-bottom:none}
 
-        /* النص في الجانب الأيسر (الأشهر الأعلى) */
-        .left-item {
-            font-size: 1.8em;
-            color: #ffffff;
-            font-weight: 500;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7), -1px -1px 2px rgba(0, 0, 0, 0.7), 
-                         1px -1px 2px rgba(0, 0, 0, 0.7), -1px 1px 2px rgba(0, 0, 0, 0.7);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            white-space: nowrap;
-        }
+.right-item,
+.left-item{
+font-size:1.4em;
+color:#fff;
+font-weight:500;
+white-space:nowrap;
+text-shadow:1px 1px 2px rgba(0,0,0,.7)
+}
 
-        /* لتوسيط المحاذاة في الصف */
-        .spacer {
-            margin: 0 15px;
-            color: rgba(255,255,255,0.8);
-            font-weight: bold;
-        }
+/* صورة التليجرام */
+.telegram-image-container{
+position:absolute;
+left:12px;
+bottom:-5px;
+width:35px
+}
 
-        /* حاوية صورة Telegram (يسار سفلي) - تصغير وتنزيل أكثر */
-        .telegram-image-container {
-            position: absolute;
-            left: 15px;
-            bottom: -5px;  /* تنزيل أكثر من الحافة */
-            width: 6%;     /* تصغير أكثر */
-            min-width: 30px;  /* حجم أصغر */
-            max-width: 50px;  /* حجم أصغر */
-            z-index: 20;
-        }
+.telegram-image{
+width:100%;
+border-radius:50%;
+border:2px solid #fff
+}
 
-        .telegram-link {
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
+/* الموبايل */
+@media(max-width:600px){
 
-        .telegram-image {
-            width: 100%;
-            height: auto;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            border: 2px solid #ffffff;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
+.outer-black-box{
+width:95%;
+padding:10px
+}
 
-        .telegram-image:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
-        }
+.container{
+width:95%;
+padding:20px
+}
 
-        /* تحسينات للشاشات الصغيرة */
-        @media only screen and (max-width: 750px) {
-            .outer-black-box {
-                width: 95%;
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 15px;
-            }
-            .corner-text {
-                font-size: 1.6em;
-                margin-bottom: 10px;
-            }
-            .container {
-                width: 95%;
-                padding: 30px 20px;
-            }
-            .price-row {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 5px;
-                border-bottom: 1px solid rgba(255,255,255,0.1);
-                padding-bottom: 10px;
-            }
-            .right-item, .left-item {
-                font-size: 1.6em;
-                white-space: normal;
-            }
-            .spacer {
-                display: none;
-            }
-            .left-item {
-                margin-right: 20px;
-            }
-            .telegram-image-container {
-                width: 8%;     /* أصغر */
-                min-width: 25px;  /* أصغر */
-                left: 8px;
-                bottom: -5px;  /* تنزيل أكثر */
-            }
-        }
+.right-item,
+.left-item{
+font-size:1.2em
+}
 
-        @media only screen and (max-width: 480px) {
-            .ios-notification { width: 90%; }
-            .corner-text { font-size: 1.4em; }
-            .right-item, .left-item { font-size: 1.4em; }
-            .telegram-image-container {
-                width: 7%;
-                min-width: 22px;
-                bottom: -5px;
-            }
-        }
-    </style>
+}
+
+</style>
 </head>
+
 <body>
 
-    <!-- إشعار iOS -->
-    <div id="iosNotif" class="ios-notification">
-        <img src="1000057489.jpg" alt="Logo" class="notif-img">
-        <div class="notif-content">
-            <span class="notif-title">TeamRo</span>
-            <span class="notif-body">Hi, My Friend</span>
-        </div>
-    </div>
+<div id="iosNotif" class="ios-notification">
 
-    <!-- المربع الأسود الخارجي -->
-    <div class="outer-black-box">
-        <div class="corner-text">~ اسعار المدفوعه</div>
-        <a href="https://t.me/F9XBOT" class="log-image-link" target="_blank">
-            <img src="Log2.jpg" alt="Logo" class="log-image">
-        </a>
-    </div>
+<img src="1000057489.jpg" class="notif-img">
 
-    <!-- المربع الشفاف (النصوص بشكل صفوف مزدوجة) -->
-    <div class="container">
-        <!-- حاوية الصفوف -->
-        <div class="pricing-rows">
-            <!-- الصف 1 -->
-            <div class="price-row">
-                <div class="right-item">1 شهر = 4$</div>
-                <div class="left-item">7 شهر = 22$</div>
-            </div>
-            <!-- الصف 2 -->
-            <div class="price-row">
-                <div class="right-item">2 شهر = 7$</div>
-                <div class="left-item">8 شهر = 25$</div>
-            </div>
-            <!-- الصف 3 -->
-            <div class="price-row">
-                <div class="right-item">3 شهر = 10$</div>
-                <div class="left-item">9 شهر = 28$</div>
-            </div>
-            <!-- الصف 4 -->
-            <div class="price-row">
-                <div class="right-item">4 شهر = 13$</div>
-                <div class="left-item">10 شهر = 31$</div>
-            </div>
-            <!-- الصف 5 -->
-            <div class="price-row">
-                <div class="right-item">5 شهر = 16$</div>
-                <div class="left-item">11 شهر = 34$</div>
-            </div>
-            <!-- الصف 6 -->
-            <div class="price-row">
-                <div class="right-item">6 شهر = 19$</div>
-                <div class="left-item">12 شهر = 37$</div>
-            </div>
-        </div>
-        
-        <!-- صورة Telegram في أقصى يسار المربع الشفاف - مصغرة ومنزلة أكثر -->
-        <div class="telegram-image-container">
-            <a href="https://t.me/TeamRover" class="telegram-link" target="_blank">
-                <img src="Telegram.jpg" alt="Telegram" class="telegram-image">
-            </a>
-        </div>
-    </div>
+<div class="notif-content">
+<span class="notif-title">TeamRo</span>
+<span class="notif-body">Hi, My Friend</span>
+</div>
 
-    <script>
-        window.onload = function() {
-            const notif = document.getElementById('iosNotif');
-            
-            setTimeout(() => {
-                notif.classList.add('show');
-            }, 1000);
+</div>
 
-            setTimeout(() => {
-                notif.classList.remove('show');
-            }, 51000);
-        };
-    </script>
+<div class="outer-black-box">
+
+<div class="corner-text">~ اسعار المدفوعه</div>
+
+<a href="https://t.me/F9XBOT" target="_blank">
+<img src="Log2.jpg" class="log-image">
+</a>
+
+</div>
+
+<div class="container">
+
+<div class="pricing-rows">
+
+<div class="price-row">
+<div class="right-item">1 شهر = 4$</div>
+<div class="left-item">7 شهر = 22$</div>
+</div>
+
+<div class="price-row">
+<div class="right-item">2 شهر = 7$</div>
+<div class="left-item">8 شهر = 25$</div>
+</div>
+
+<div class="price-row">
+<div class="right-item">3 شهر = 10$</div>
+<div class="left-item">9 شهر = 28$</div>
+</div>
+
+<div class="price-row">
+<div class="right-item">4 شهر = 13$</div>
+<div class="left-item">10 شهر = 31$</div>
+</div>
+
+<div class="price-row">
+<div class="right-item">5 شهر = 16$</div>
+<div class="left-item">11 شهر = 34$</div>
+</div>
+
+<div class="price-row">
+<div class="right-item">6 شهر = 19$</div>
+<div class="left-item">12 شهر = 37$</div>
+</div>
+
+</div>
+
+<div class="telegram-image-container">
+<a href="https://t.me/TeamRover" target="_blank">
+<img src="Telegram.jpg" class="telegram-image">
+</a>
+</div>
+
+</div>
+
+<script>
+
+window.onload=function(){
+
+const notif=document.getElementById("iosNotif")
+
+setTimeout(()=>{
+notif.classList.add("show")
+},1000)
+
+setTimeout(()=>{
+notif.classList.remove("show")
+},51000)
+
+}
+
+</script>
 
 </body>
 </html>
