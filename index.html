@@ -35,24 +35,25 @@
         .corner-text {
             position: absolute;
             top: 20px;
-            right: 20px; /* تغيير من left إلى right */
+            right: 20px;
             font-size: 1.8em;
             font-weight: bold;
             color: #1a1a1a; /* اسود لامع */
             text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
             margin: 0;
-            /* تم إزالة animation: blink 2s infinite; */
         }
 
         /* النصوص في وسط المربع */
         .center-texts {
             text-align: center;
-            margin-top: 70px; /* زيادة المسافة لتكون تحت النص العلوي بحوالي 2 Enter */
+            margin-top: 70px; /* تباعد بين النص العلوي والنصوص الثلاثة */
         }
 
         .greeting {
             font-size: 1.8em;
-            margin: 5px 0; /* تقليل المسافة بين النصوص الثلاثة */
+            margin: 0; /* إزالة التباعد بين النصوص */
+            padding: 0; /* إزالة أي حشو داخلي */
+            line-height: 1; /* جعل الخط متلاصق بشكل أكبر */
             color: #ffffff; /* ابيض */
             font-weight: 500;
         }
@@ -67,16 +68,17 @@
             .corner-text {
                 font-size: 1.4em;
                 top: 15px;
-                right: 15px; /* تعديل للجهة اليمنى */
+                right: 15px;
             }
 
             .greeting {
                 font-size: 1.4em;
-                margin: 3px 0; /* مسافة أقل للموبايل */
+                margin: 0;
+                line-height: 1;
             }
 
             .center-texts {
-                margin-top: 50px; /* تعديل المسافة للموبايل */
+                margin-top: 50px;
             }
         }
 
@@ -89,16 +91,17 @@
 
             .corner-text {
                 font-size: 1.6em;
-                right: 20px; /* تعديل للجهة اليمنى */
+                right: 20px;
             }
 
             .greeting {
                 font-size: 1.6em;
-                margin: 4px 0;
+                margin: 0;
+                line-height: 1;
             }
 
             .center-texts {
-                margin-top: 60px; /* تعديل المسافة للتابلت */
+                margin-top: 60px;
             }
         }
 
@@ -111,16 +114,17 @@
 
             .corner-text {
                 font-size: 1.8em;
-                right: 20px; /* تعديل للجهة اليمنى */
+                right: 20px;
             }
 
             .greeting {
                 font-size: 1.8em;
-                margin: 5px 0;
+                margin: 0;
+                line-height: 1;
             }
 
             .center-texts {
-                margin-top: 70px; /* المسافة الأساسية للكمبيوتر */
+                margin-top: 70px;
             }
         }
     </style>
@@ -130,7 +134,7 @@
         <!-- نص الزاوية اليمنى بدون تأثير وميض -->
         <div class="corner-text">TEᗩᗰ ᖇOᐯEᖇ</div>
         
-        <!-- النصوص في الوسط -->
+        <!-- النصوص في الوسط ملتصقة ببعضها البعض -->
         <div class="center-texts">
             <div class="greeting">اهلا بك</div>
             <div class="greeting">كيف حالك</div>
