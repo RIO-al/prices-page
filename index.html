@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boot prices · تحديث الأسعار</title>
+    <title>Boot prices • تصميم الصفوف المزدوجة</title>
     <style>
         * {
             box-sizing: border-box;
@@ -83,7 +83,7 @@
             margin-bottom: 30px;
             border: 2px solid #ffffff;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
-            width: 650px;          /* أوسع قليلاً لاستيعاب المحتوى الجديد */
+            width: 700px;
             max-width: 95%;
             box-sizing: border-box;
             display: flex;
@@ -127,43 +127,81 @@
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
             border-radius: 20px;
-            padding: 45px 40px;
+            padding: 45px 45px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.2);
             max-width: 95%;
-            width: 650px;          /* متناسق مع العرض الجديد */
+            width: 700px;
             position: relative;
             box-sizing: border-box;
         }
 
-        /* حاوية النصوص الأساسية (تعديل لعرض عمودين) */
-        .prices-grid {
+        /* الحاوية الرئيسية للنصوص (ستعمل كشبكة صفوف) */
+        .pricing-rows {
             display: flex;
-            flex-direction: row-reverse;   /* ليبقى النص الأول على اليمين */
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+
+        /* كل صف يحتوي على عمودين (يمين + يسار) */
+        .price-row {
+            display: flex;
+            flex-direction: row;
             justify-content: space-between;
-            gap: 30px;
-            margin-top: 5px;
+            align-items: center;
             flex-wrap: wrap;
             text-align: right;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+            padding-bottom: 5px;
+        }
+        /* آخر صف لا يحتاج خط */
+        .price-row:last-child {
+            border-bottom: none;
         }
 
-        /* كل عمود */
-        .price-column {
-            flex: 1 1 200px;
-            min-width: 150px;
-        }
-
-        .price-item {
+        /* النص في الجانب الأيمن (الأشهر القليلة) */
+        .right-item {
             font-size: 1.8em;
             color: #ffffff;
             font-weight: 500;
-            margin: 0 0 10px 0;       /* مسافة بين الأسطر */
-            padding: 0;
-            line-height: 1.6;
-            text-align: right;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7), -1px -1px 2px rgba(0, 0, 0, 0.7), 
                          1px -1px 2px rgba(0, 0, 0, 0.7), -1px 1px 2px rgba(0, 0, 0, 0.7);
-            white-space: nowrap;      /* لئلا ينكسر السعر */
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            white-space: nowrap;
+        }
+
+        /* النص في الجانب الأيسر (الأشهر الأعلى) */
+        .left-item {
+            font-size: 1.8em;
+            color: #ffffff;
+            font-weight: 500;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7), -1px -1px 2px rgba(0, 0, 0, 0.7), 
+                         1px -1px 2px rgba(0, 0, 0, 0.7), -1px 1px 2px rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        /* النقطة السوداء داخل الدائرة البيضاء (أو يمكن استبدالها برمز •) */
+        .bullet {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            margin-left: 10px;
+            margin-right: 4px;
+            box-shadow: 0 0 5px rgba(255,255,255,0.8);
+        }
+        /* لتوسيط المحاذاة في الصف */
+        .spacer {
+            margin: 0 15px;
+            color: rgba(255,255,255,0.8);
+            font-weight: bold;
         }
 
         /* حاوية صورة Telegram (يسار سفلي) */
@@ -197,8 +235,8 @@
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
         }
 
-        /* تكيف مع الشاشات الصغيرة */
-        @media only screen and (max-width: 700px) {
+        /* تحسينات للشاشات الصغيرة */
+        @media only screen and (max-width: 750px) {
             .outer-black-box {
                 width: 95%;
                 flex-direction: column;
@@ -213,16 +251,28 @@
                 width: 95%;
                 padding: 30px 20px;
             }
-            .prices-grid {
-                flex-direction: column;   /* تصبح عمود واحد */
+            .price-row {
+                flex-direction: column;
+                align-items: flex-start;
                 gap: 5px;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                padding-bottom: 10px;
             }
-            .price-item {
+            .right-item, .left-item {
                 font-size: 1.6em;
                 white-space: normal;
             }
+            .spacer {
+                display: none; /* نزيل الرمز في الوضع الضيق */
+            }
+            .left-item {
+                margin-right: 20px; /* إزاحة بسيطة */
+            }
+            .bullet {
+                margin-left: 5px;
+            }
             .telegram-image-container {
-                width: 12%;
+                width: 15%;
                 min-width: 45px;
                 left: 10px;
                 bottom: 10px;
@@ -232,7 +282,7 @@
         @media only screen and (max-width: 480px) {
             .ios-notification { width: 90%; }
             .corner-text { font-size: 1.4em; }
-            .price-item { font-size: 1.4em; }
+            .right-item, .left-item { font-size: 1.4em; }
         }
     </style>
 </head>
@@ -255,27 +305,39 @@
         </a>
     </div>
 
-    <!-- المربع الشفاف (النصوص) -->
+    <!-- المربع الشفاف (النصوص بشكل صفوف مزدوجة) -->
     <div class="container">
-        <!-- شبكة العمودين: الأول 1-6 شهر ، الثاني 7-11 شهر -->
-        <div class="prices-grid">
-            <!-- العمود الأيمن (الأشهر 1-6) -->
-            <div class="price-column">
-                <div class="price-item">1 شهر = 4$</div>
-                <div class="price-item">2 شهر = 7$</div>
-                <div class="price-item">3 شهر = 10$</div>
-                <div class="price-item">4 شهر = 13$</div>
-                <div class="price-item">5 شهر = 16$</div>
-                <div class="price-item">6 شهر = 19$</div>
+        <!-- حاوية الصفوف -->
+        <div class="pricing-rows">
+            <!-- الصف 1 -->
+            <div class="price-row">
+                <div class="right-item">1 شهر = 4$</div>
+                <div class="left-item"><span class="bullet"></span> • 7 شهر = 22$</div>
             </div>
-            <!-- العمود الأيسر (الأشهر 7-11) مع النقاط كما طلبت -->
-            <div class="price-column">
-                <div class="price-item">• 7 شهر = 22$</div>
-                <div class="price-item">• 8 شهر = 25$</div>
-                <div class="price-item">• 9 شهر = 28$</div>
-                <div class="price-item">• 10 شهر = 31$</div>
-                <div class="price-item">• 11 شهر = 34$</div>
-                <!-- يمكن إضافة 12 شهر إذا أردت، لكن طلبك انتهى عند 11 -->
+            <!-- الصف 2 -->
+            <div class="price-row">
+                <div class="right-item">2 شهر = 7$</div>
+                <div class="left-item"><span class="bullet"></span> • 8 شهر = 25$</div>
+            </div>
+            <!-- الصف 3 -->
+            <div class="price-row">
+                <div class="right-item">3 شهر = 10$</div>
+                <div class="left-item"><span class="bullet"></span> • 9 شهر = 28$</div>
+            </div>
+            <!-- الصف 4 -->
+            <div class="price-row">
+                <div class="right-item">4 شهر = 13$</div>
+                <div class="left-item"><span class="bullet"></span> • 10 شهر = 31$</div>
+            </div>
+            <!-- الصف 5 -->
+            <div class="price-row">
+                <div class="right-item">5 شهر = 16$</div>
+                <div class="left-item"><span class="bullet"></span> • 11 شهر = 34$</div>
+            </div>
+            <!-- الصف 6 -->
+            <div class="price-row">
+                <div class="right-item">6 شهر = 19$</div>
+                <div class="left-item"><span class="bullet"></span> • 12 شهر = 37$</div>
             </div>
         </div>
         
