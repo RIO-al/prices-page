@@ -2,7 +2,7 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Boot prices • تصميم الصفوف المزدوجة</title>
 
 <style>
@@ -21,7 +21,10 @@ justify-content:center;
 align-items:center;
 text-align:center;
 direction:rtl;
-overflow-x:hidden
+overflow:hidden; /* منع التمرير */
+position:fixed; /* تثبيت الصفحة */
+width:100%;
+height:100%;
 }
 
 /* إشعار iOS */
@@ -30,10 +33,10 @@ position:fixed;
 top:-100px;
 left:50%;
 transform:translateX(-50%);
-width:300px;
+width:320px; /* تكبير العرض قليلاً */
 background:#000;
-border-radius:20px;
-padding:10px;
+border-radius:25px; /* زيادة الانحناء قليلاً */
+padding:12px; /* تكبير الحشو */
 display:flex;
 align-items:center;
 box-shadow:0 10px 30px rgba(0,0,0,0.4);
@@ -45,16 +48,17 @@ direction:ltr
 .ios-notification.show{top:15px}
 
 .notif-img{
-width:40px;
-height:40px;
+width:55px; /* تكبير من 40px */
+height:55px; /* تكبير من 40px */
 border-radius:50%;
 object-fit:cover;
-margin-right:10px
+margin-right:12px; /* زيادة المسافة */
+border:2px solid #fff; /* اضافة اطار للصورة */
 }
 
 .notif-title{
 font-weight:bold;
-font-size:1em;
+font-size:1.2em; /* تكبير الخط */
 color:#fff;
 margin:0;
 display:block
@@ -62,29 +66,29 @@ display:block
 
 .notif-body{
 font-weight:bold;
-font-size:.8em;
+font-size:1em; /* تكبير الخط */
 color:#fff;
 margin:2px 0 0 0;
 display:block
 }
 
-/* المربع الأسود - تم التصغير */
+/* المربع الأسود */
 .outer-black-box{
 background:#000;
 border-radius:12px;
-padding:8px 16px;  /* تم التصغير من 12px 20px */
-margin-bottom:15px;  /* تم التصغير من 20px */
+padding:8px 16px;
+margin-bottom:15px;
 border:2px solid #fff;
 box-shadow:0 4px 20px rgba(0,0,0,.7);
-width:460px;  /* تم التصغير من 520px */
-max-width:90%;  /* تم التعديل ليكون مناسباً */
+width:460px;
+max-width:90%;
 display:flex;
 align-items:center;
 justify-content:space-between
 }
 
 .corner-text{
-font-size:1.2em;  /* تم التصغير من 1.4em */
+font-size:1.2em;
 font-weight:bold;
 color:#fff;
 margin:0;
@@ -93,22 +97,22 @@ text-align:right
 }
 
 .log-image{
-width:32px;  /* تم التصغير من 40px */
-height:32px;  /* تم التصغير من 40px */
+width:32px;
+height:32px;
 border-radius:50%;
 object-fit:cover;
 border:2px solid #fff
 }
 
-/* المربع الشفاف - تم التصغير */
+/* المربع الشفاف */
 .container{
 background:rgba(255,255,255,.15);
 backdrop-filter:blur(10px);
 border-radius:16px;
-padding:15px 20px;  /* تم التصغير من 25px 30px */
+padding:15px 20px;
 box-shadow:0 8px 32px rgba(0,0,0,.3);
 border:1px solid rgba(255,255,255,.2);
-width:460px;  /* تم التصغير من 520px */
+width:460px;
 max-width:90%;
 position:relative
 }
@@ -117,7 +121,7 @@ position:relative
 .pricing-rows{
 display:flex;
 flex-direction:column;
-gap:4px;  /* تم التصغير من 8px */
+gap:4px;
 width:100%
 }
 
@@ -126,14 +130,14 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 border-bottom:1px dashed rgba(255,255,255,.2);
-padding:4px 0  /* تم التصغير من 6px */
+padding:4px 0
 }
 
 .price-row:last-child{border-bottom:none}
 
 .right-item,
 .left-item{
-font-size:1.2em;  /* تم التصغير من 1.4em */
+font-size:1.2em;
 color:#fff;
 font-weight:500;
 white-space:nowrap;
@@ -145,7 +149,7 @@ text-shadow:1px 1px 2px rgba(0,0,0,.7)
 position:absolute;
 left:12px;
 bottom:-12px;
-width:30px  /* تم التصغير من 35px */
+width:30px
 }
 
 .telegram-image{
@@ -156,29 +160,29 @@ border:2px solid #fff
 
 /* زر الدفع */
 .pay-btn{
-margin-top:18px;  /* تم التصغير قليلاً من 20px */
+margin-top:18px;
 background:#000;
 color:#fff;
-padding:10px 25px;  /* تم التصغير من 12px 30px */
+padding:10px 25px;
 border-radius:30px;
 text-decoration:none;
 display:inline-block;
-font-size:0.95em;  /* تم التصغير قليلاً من 1em */
+font-size:0.95em;
 box-shadow:0 4px 10px rgba(0,0,0,.4)
 }
 
 /* النصوص الزرقاء */
 .extra-links{
-margin-top:12px;  /* تم التصغير من 15px */
+margin-top:12px;
 border-top:1px solid rgba(255,255,255,.3);
-padding-top:8px;  /* تم التصغير من 10px */
-font-size:13px  /* تم التصغير من 14px */
+padding-top:8px;
+font-size:13px
 }
 
 .extra-links span{
 color:#4da3ff;
 cursor:pointer;
-margin:0 6px  /* تم التصغير من 8px */
+margin:0 6px
 }
 
 /* popup */
@@ -224,8 +228,8 @@ cursor:pointer
 <img src="notice.jpg" class="notif-img">
 
 <div>
-<span class="notif-title">TeamRo</span>
-<span class="notif-body">Hi, My Friend</span>
+<span class="notif-title">𓏺 𝖳𝖾𝖺𝗆 𝖱𝗈𝗏𝖾𝗋</span>
+<span class="notif-body">𝖶𝖾𝗅𝖼𝗈𝗆𝖾 𝖳𝗈 𝖳𝗁𝖾 𝖯𝗋𝗂𝖼𝖾𝗌 𝖯𝖺𝗀𝖾</span>
 </div>
 
 </div>
@@ -299,7 +303,7 @@ cursor:pointer
 window.onload=function(){
 const notif=document.getElementById("iosNotif")
 setTimeout(()=>{notif.classList.add("show")},1000)
-setTimeout(()=>{notif.classList.remove("show")},11000) // تم التعديل من 51000 إلى 11000 (10 ثواني)
+setTimeout(()=>{notif.classList.remove("show")},11000)
 }
 
 function showPayments(){
