@@ -31,13 +31,12 @@ top:-100px;
 left:50%;
 transform:translateX(-50%);
 width:300px;
-background:rgba(255,255,255,0.95);
-backdrop-filter:blur(15px);
+background:#000;
 border-radius:20px;
 padding:10px;
 display:flex;
 align-items:center;
-box-shadow:0 10px 30px rgba(0,0,0,0.2);
+box-shadow:0 10px 30px rgba(0,0,0,0.4);
 z-index:9999;
 transition:top .6s cubic-bezier(.68,-.55,.27,1.55);
 direction:ltr
@@ -56,7 +55,7 @@ margin-right:10px
 .notif-title{
 font-weight:bold;
 font-size:1em;
-color:#000;
+color:#fff;
 margin:0;
 display:block
 }
@@ -64,7 +63,7 @@ display:block
 .notif-body{
 font-weight:bold;
 font-size:.8em;
-color:#333;
+color:#fff;
 margin:2px 0 0 0;
 display:block
 }
@@ -141,11 +140,11 @@ white-space:nowrap;
 text-shadow:1px 1px 2px rgba(0,0,0,.7)
 }
 
-/* صورة التليجرام */
+/* Telegram image */
 .telegram-image-container{
 position:absolute;
 left:12px;
-bottom:-5px;
+bottom:-12px;
 width:35px
 }
 
@@ -155,24 +154,64 @@ border-radius:50%;
 border:2px solid #fff
 }
 
-/* الموبايل */
-@media(max-width:600px){
-
-.outer-black-box{
-width:95%;
-padding:10px
+/* زر الدفع */
+.pay-btn{
+margin-top:20px;
+background:#000;
+color:#fff;
+padding:12px 30px;
+border-radius:30px;
+text-decoration:none;
+display:inline-block;
+font-size:1em;
+box-shadow:0 4px 10px rgba(0,0,0,.4)
 }
 
-.container{
-width:95%;
-padding:20px
+/* النصوص الزرقاء */
+.extra-links{
+margin-top:15px;
+border-top:1px solid rgba(255,255,255,.3);
+padding-top:10px;
+font-size:14px
 }
 
-.right-item,
-.left-item{
-font-size:1.2em
+.extra-links span{
+color:#4da3ff;
+cursor:pointer;
+margin:0 8px
 }
 
+/* popup */
+.popup{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+justify-content:center;
+align-items:center;
+z-index:99999
+}
+
+.popup-box{
+background:#111;
+color:#fff;
+padding:25px;
+border-radius:15px;
+max-width:320px;
+line-height:1.8
+}
+
+.close-btn{
+margin-top:15px;
+background:#444;
+border:none;
+color:#fff;
+padding:6px 15px;
+border-radius:10px;
+cursor:pointer
 }
 
 </style>
@@ -184,7 +223,7 @@ font-size:1.2em
 
 <img src="1000057489.jpg" class="notif-img">
 
-<div class="notif-content">
+<div>
 <span class="notif-title">TeamRo</span>
 <span class="notif-body">Hi, My Friend</span>
 </div>
@@ -195,9 +234,7 @@ font-size:1.2em
 
 <div class="corner-text">~ اسعار المدفوعه</div>
 
-<a href="https://t.me/F9XBOT" target="_blank">
 <img src="Log2.jpg" class="log-image">
-</a>
 
 </div>
 
@@ -237,28 +274,57 @@ font-size:1.2em
 
 </div>
 
+<div class="extra-links">
+<span onclick="showFeatures()">مشاهده مميزات البوت المدفوع</span>
+|
+<span onclick="showPayments()">مشاهده طرق الدفع</span>
+</div>
+
 <div class="telegram-image-container">
-<a href="https://t.me/TeamRover" target="_blank">
 <img src="Telegram.jpg" class="telegram-image">
-</a>
 </div>
 
 </div>
+
+<a href="https://t.me/F9XBOT" class="pay-btn">اضغط هنا لأستكمال عمليه الدفع</a>
+
+
+<div id="popup" class="popup">
+<div class="popup-box" id="popupContent"></div>
+</div>
+
 
 <script>
 
 window.onload=function(){
-
 const notif=document.getElementById("iosNotif")
+setTimeout(()=>{notif.classList.add("show")},1000)
+setTimeout(()=>{notif.classList.remove("show")},51000)
+}
 
-setTimeout(()=>{
-notif.classList.add("show")
-},1000)
+function showPayments(){
+document.getElementById("popup").style.display="flex"
+document.getElementById("popupContent").innerHTML=`
+1 - ماستر كارد || Master Card : 7116326351<br>
+2 - زين كاش || Zain Cash : 07749334879<br>
+3 - اسياسيل || Asia Cell : 07770954876<br>
+4 - نستقبل ايضا نجوم و هدايه تليكرام<br>
+<button class="close-btn" onclick="closePopup()">اغلاق</button>
+`
+}
 
-setTimeout(()=>{
-notif.classList.remove("show")
-},51000)
+function showFeatures(){
+document.getElementById("popup").style.display="flex"
+document.getElementById("popupContent").innerHTML=`
+1 - خالي من الاعلانات و الاذاعه<br>
+2 - لا يحتوي على اشتراك اجباري<br>
+3 - يكون سلس اكثر من البوت المجاني<br>
+<button class="close-btn" onclick="closePopup()">اغلاق</button>
+`
+}
 
+function closePopup(){
+document.getElementById("popup").style.display="none"
 }
 
 </script>
