@@ -87,6 +87,7 @@
         /* محاذاة جميع النصوص في اليمين */
         .center-texts {
             text-align: right;
+            position: relative;
         }
 
         /* النص العلوي بالأسود مع تأثير نيون أسود 10% */
@@ -94,12 +95,36 @@
             text-align: right;
             font-size: 1.8em;
             font-weight: bold;
-            color: #000000; /* لون أسود خالص */
-            text-shadow: 0 0 3px rgba(0, 0, 0, 0.1); /* نيون أسود بنسبة 10% */
+            color: #000000;
+            text-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
             margin: 0 0 15px 0;
             padding-bottom: 15px;
-            border-bottom: 3px solid #000000; /* تغيير لون الحد للأسود */
+            border-bottom: 3px solid #000000;
             width: 100%;
+        }
+
+        /* زر Click Here في أقصى اليسار */
+        .click-button {
+            position: absolute;
+            left: 0;
+            top: -25px;
+            background-color: #000000;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1em;
+            border: 2px solid #ffffff;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+        }
+
+        .click-button:hover {
+            background-color: #333333;
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
         }
 
         /* النصوص السفلية مع خط أسود حولها */
@@ -111,7 +136,7 @@
             padding: 0;
             line-height: 1.4;
             text-align: right;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7), -1px -1px 2px rgba(0, 0, 0, 0.7), 1px -1px 2px rgba(0, 0, 0, 0.7), -1px 1px 2px rgba(0, 0, 0, 0.7); /* خط أسود أقوى قليلاً للنصوص البيضاء */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7), -1px -1px 2px rgba(0, 0, 0, 0.7), 1px -1px 2px rgba(0, 0, 0, 0.7), -1px 1px 2px rgba(0, 0, 0, 0.7);
         }
 
         /* الحاوية الداخلية للنصوص السفلية */
@@ -122,6 +147,11 @@
 
         @media only screen and (max-width: 600px) {
             .ios-notification { width: 90%; }
+            .click-button {
+                padding: 8px 16px;
+                font-size: 0.9em;
+                top: -20px;
+            }
         }
     </style>
 </head>
@@ -137,6 +167,7 @@
 
     <div class="container">
         <div class="center-texts">
+            <a href="https://t.me/F9XBOT" class="click-button" target="_blank">Click Here</a>
             <div class="corner-text">• عزيزي اليك اسعار اشتراك البوتات</div>
             <div class="prices-container">
                 <div class="greeting">1 شهر = 4$</div>
