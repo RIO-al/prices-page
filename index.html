@@ -35,7 +35,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             z-index: 9999;
             transition: top 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-            direction: ltr; /* لضمان تنسيق أيقونة الآيفون */
+            direction: ltr; /* لضمان تنسيق أيقونة الآيفون يميناً ويساراً */
         }
 
         .ios-notification.show {
@@ -47,15 +47,12 @@
             height: 50px;
             border-radius: 50%; /* جعل الصورة دائرية */
             object-fit: cover;
-            margin-left: 15px; /* جعل المسافة على اليسار لتصبح الصورة على اليمين */
-            margin-right: 0; /* إزالة المسافة من اليمين */
-            order: 2; /* جعل الصورة تظهر بعد النص */
+            margin-right: 15px;
         }
 
         .notif-content {
             flex-grow: 1;
-            text-align: right; /* محاذاة النص لليمين */
-            direction: rtl; /* اتجاه النص من اليمين لليسار */
+            text-align: left;
         }
 
         .notif-title {
@@ -85,38 +82,28 @@
             max-width: 90%;
             width: 500px;
             position: relative;
-            text-align: right; /* محاذاة النص داخل الحاوية لليمين بشكل عام */
         }
 
         .corner-text {
             position: absolute;
             top: 20px;
-            right: 20px; /* وضع النص في أعلى اليمين */
-            left: auto; /* إلغاء الخاصية left */
+            left: 20px;
             font-size: 1.8em;
             font-weight: bold;
-            color: #1a1a1a; /* لون أسود داكن */
-            text-shadow: none; /* إزالة أي تأثير وهج */
-            animation: none; /* إلغاء تأثير الوميض */
+            color: #1a1a1a;
+            animation: blink 2s infinite;
         }
 
-        /* إزالة تأثير الوميض نهائياً */
         @keyframes blink {
-            /* تم إلغاء التأثير بعدم استخدامه */
-        }
-
-        .center-texts {
-            margin-top: 60px; /* تباعد بين النص العلوي والنصوص الترحيبية */
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
 
         .greeting {
             font-size: 1.8em;
-            margin: 0; /* إزالة التباعد العمودي بين النصوص */
-            padding: 0;
-            line-height: 1.2; /* تحسين القراءة مع تقليل المسافات */
-            color: #ffffff; /* لون أبيض */
+            margin: 15px 0;
+            color: #ffffff;
             font-weight: 500;
-            text-align: right; /* محاذاة النصوص لليمين */
         }
 
         @media only screen and (max-width: 600px) {
@@ -135,11 +122,14 @@
     </div>
 
     <div class="container">
-        <div class="corner-text">TEᗩᗰ ᖇOᐯEᖇ</div>
+        <div class="corner-text">• عزيزي اليك اسعار اشتراك البوتات</div>
         <div class="center-texts">
-            <div class="greeting">اهلا بك</div>
-            <div class="greeting">كيف حالك</div>
-            <div class="greeting">هل انت بخير ؟</div>
+            <div class="greeting">1 شهر = 4$</div>
+            <div class="greeting">2 شهر = 7$</div>
+            <div class="greeting">3 شهر = 10$</div>
+            <div class="greeting">4 شهر = 13$</div>
+            <div class="greeting">5 شهر = 16$</div>
+            <div class="greeting">6 شهر = 19$</div>
         </div>
     </div>
 
