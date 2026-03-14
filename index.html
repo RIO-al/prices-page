@@ -16,81 +16,93 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            color: white; /* النص باللون الأبيض */
             direction: rtl;
         }
 
         .message {
-            /* إضافة طبقة ضبابية خفيفة خلف النص لضمان وضوحه فوق الصورة */
-            background: rgba(0, 0, 0, 0.4); 
-            backdrop-filter: blur(5px);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            /* تم إزالة المربع الشفاف بالكامل */
+            padding: 20px;
             max-width: 90%;
-            width: 400px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
-            color: #ffffff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* ظل للنص لزيادة الوضوح */
+            /* نص أزرق نيون مناسب للخلفية */
+            color: #00f3ff;
+            text-shadow: 
+                0 0 10px #00f3ff,
+                0 0 20px #00f3ff,
+                0 0 30px #00b7ff,
+                0 0 40px #0088ff;
+            font-weight: bold;
         }
 
         p {
             font-size: 1.5em;
             margin: 5px 0;
-            color: #ffffff;
-            opacity: 1; /* جعل النص بكامل وضوحه */
+            /* نص أزرق نيون للعبارة الثانية */
+            color: #00f3ff;
+            text-shadow: 
+                0 0 8px #00f3ff,
+                0 0 15px #00b7ff,
+                0 0 25px #0088ff;
+            opacity: 0.95;
         }
 
         /* =====  أجهزة الموبايل (شاشات عرضها 600px أو أقل) ===== */
         @media only screen and (max-width: 600px) {
             .message {
-                width: 85%; /* عرض أكبر نسبياً من الشاشة */
-                padding: 25px; /* مسافة داخلية أقل */
+                width: 85%;
+                padding: 15px;
             }
 
             h1 {
-                font-size: 1.8em; /* خط أصغر */
+                font-size: 1.8em;
+                text-shadow: 
+                    0 0 8px #00f3ff,
+                    0 0 15px #00b7ff,
+                    0 0 25px #0088ff;
             }
 
             p {
-                font-size: 1.2em; /* خط أصغر */
+                font-size: 1.2em;
+                text-shadow: 
+                    0 0 5px #00f3ff,
+                    0 0 10px #00b7ff,
+                    0 0 15px #0088ff;
             }
         }
 
         /* =====  أجهزة الآيباد والأجهزة اللوحية (شاشات بين 601px و 1024px) ===== */
         @media only screen and (min-width: 601px) and (max-width: 1024px) {
             .message {
-                width: 70%; /* عرض مناسب للآيباد */
-                padding: 35px; /* مسافة داخلية متوسطة */
+                width: 70%;
+                padding: 18px;
             }
 
             h1 {
-                font-size: 2.2em; /* خط متوسط */
+                font-size: 2.2em;
             }
 
             p {
-                font-size: 1.4em; /* خط متوسط */
+                font-size: 1.4em;
             }
         }
 
         /* =====  أجهزة الحاسوب (شاشات عرضها 1025px أو أكثر) ===== */
         @media only screen and (min-width: 1025px) {
             .message {
-                width: 400px; /* عرض ثابت */
-                padding: 40px; /* مسافة داخلية أصلية */
+                width: auto;
+                padding: 20px;
             }
 
             h1 {
-                font-size: 2.5em; /* خط كبير */
+                font-size: 2.5em;
             }
 
             p {
-                font-size: 1.5em; /* خط كبير */
+                font-size: 1.5em;
             }
         }
     </style>
