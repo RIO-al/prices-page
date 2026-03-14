@@ -197,10 +197,10 @@
         .telegram-image-container {
             position: absolute;
             left: 20px;
-            bottom: 5px;  /* تم التعديل من 20px إلى 5px لخفض الصورة */
-            width: 10%;
-            min-width: 50px;
-            max-width: 80px;
+            bottom: 0px;  /* نزلها لأقصى حد */
+            width: 8%;    /* صغرها أكثر */
+            min-width: 40px;  /* حجم أصغر */
+            max-width: 70px;  /* حجم أصغر */
             z-index: 20;
         }
 
@@ -252,16 +252,16 @@
                 white-space: normal;
             }
             .spacer {
-                display: none; /* نزيل الرمز في الوضع الضيق */
+                display: none;
             }
             .left-item {
-                margin-right: 20px; /* إزاحة بسيطة */
+                margin-right: 20px;
             }
             .telegram-image-container {
-                width: 15%;
-                min-width: 45px;
+                width: 12%;     /* أصغر للشاشات الصغيرة */
+                min-width: 35px;  /* أصغر */
                 left: 10px;
-                bottom: 5px;  /* تعديل القيمة للشاشات الصغيرة أيضاً */
+                bottom: 0px;    /* نزلها لأقصى حد */
             }
         }
 
@@ -269,6 +269,10 @@
             .ios-notification { width: 90%; }
             .corner-text { font-size: 1.4em; }
             .right-item, .left-item { font-size: 1.4em; }
+            .telegram-image-container {
+                width: 10%;
+                min-width: 30px;
+            }
         }
     </style>
 </head>
