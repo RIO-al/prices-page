@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,53 +7,50 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            /* إضافة الصورة كخلفية */
+            background: url('1000057477.jpg') no-repeat center center fixed;
+            background-size: cover; /* تجعل الصورة تغطي كامل الشاشة */
             min-height: 100vh;
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            color: white;
+            color: white; /* النص باللون الأبيض */
             direction: rtl;
         }
+
         .message {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            /* إضافة طبقة ضبابية خفيفة خلف النص لضمان وضوحه فوق الصورة */
+            background: rgba(0, 0, 0, 0.4); 
+            backdrop-filter: blur(5px);
             padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
             max-width: 90%;
             width: 400px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
+
         h1 {
-            font-size: 2em;
+            font-size: 2.5em;
             margin-bottom: 10px;
-            color: #fff;
-            opacity: 0.9; /* تطبيق الشفافية على مرحبا صديقي احمد */
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* ظل للنص لزيادة الوضوح */
         }
+
         p {
-            font-size: 1.2em;
-            margin: 5px 0;
-            opacity: 0.9; /* تطبيق الشفافية على اهلا بك */
-        }
-        .team-name {
             font-size: 1.5em;
-            font-weight: bold;
-            margin-top: 20px;
-            color: #ffd700;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-            opacity: 0.9; /* تطبيق الشفافية على TeamRover */
+            margin: 5px 0;
+            color: #ffffff;
+            opacity: 1; /* جعل النص بكامل وضوحه */
         }
     </style>
 </head>
 <body>
     <div class="message">
-        <h1>مرحباً صديقي أحمد</h1>
+        <h1>مرحبا صديقي احمد</h1>
         <p>اهلا بك</p>
-        <div class="team-name">TeamRover</div>
     </div>
-</body>
-</html>    </div>
 </body>
 </html>
