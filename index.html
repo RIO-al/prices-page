@@ -32,7 +32,7 @@ position:fixed;
 top:-100px;
 left:50%;
 transform:translateX(-50%);
-width:350px;
+width:320px;
 background:#000;
 border-radius:100px;
 padding:12px;
@@ -52,11 +52,12 @@ width: 100%;
 }
 
 .notif-img{
-width:70px;
-height:70px;
+width:55px;
+height:55px;
 border-radius:50%;
 object-fit:cover;
 margin-right:12px;
+border:2px solid #fff;
 }
 
 .notif-title{
@@ -99,10 +100,11 @@ text-align:right
 }
 
 .log-image{
-width:45px;
-height:45px;
+width:32px;
+height:32px;
 border-radius:50%;
 object-fit:cover;
+border:2px solid #fff
 }
 
 .container{
@@ -213,9 +215,72 @@ border-radius:10px;
 cursor:pointer
 }
 
+/* القسم الجديد لنافذة البنود الإجبارية */
+.terms-popup {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 100000;
+}
+.terms-box {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 30px 25px;
+    border-radius: 20px;
+    max-width: 360px;
+    width: 90%;
+    text-align: right;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid #444;
+}
+.terms-title {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.terms-list {
+    text-align: right;
+    font-size: 1em;
+    color: #ddd;
+    margin-bottom: 25px;
+    padding-right: 5px;
+}
+.terms-list p {
+    margin: 12px 0;
+    line-height: 1.6;
+}
+.agree-btn {
+    background: #000;
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: 0.3s;
+}
+.agree-btn:hover {
+    background: #222;
+}
+.main-content {
+    display: none; /* المخفي إلى أن يوافق المستخدم */
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
 </style>
 </head>
-
 <body>
 
 <div id="iosNotif" class="ios-notification">
@@ -225,6 +290,24 @@ cursor:pointer
 <span class="notif-body">𝖶𝖾𝗅𝖼𝗈𝗆𝖾 𝖳𝗈 𝖳𝗁𝖾 𝖯𝗋𝗂𝖼𝖾𝗌 𝖯𝖺𝗀𝖾</span>
 </div>
 </div>
+
+<!-- نافذة البنود الإجبارية (تظهر أولاً) -->
+<div id="termsPopup" class="terms-popup">
+    <div class="terms-box">
+        <div class="terms-title">بنود و سياسه Maker Bot's</div>
+        <div class="terms-list">
+            <p>1 - الاسعار التي سيتم عرضها ثابته لا يمكن تغييرها</p>
+            <p>2 - في حال تحويل المبلغ و اكتمال عمليه التحوبل لا يمكنك استعاده المبلغ</p>
+            <p>3 - الاسعار خاصه بالبوتات التي يمكن صنعها من بوت Maker Bot's فقط</p>
+            <p>4 - لا يمكنك تجميد مده البوت المجاني واستئنافها في وقت لاحق</p>
+            <p>5 - اذا قمت بعمليه التحويل ولم ترسل لقطه شاشه في بوت Rover Maker Services لم يتم تحويل بوتك الى مدفوع</p>
+        </div>
+        <button class="agree-btn" onclick="acceptTerms()">موافق</button>
+    </div>
+</div>
+
+<!-- المحتوى الأصلي المغلف داخل div مخفي لحين الموافقة -->
+<div id="mainContent" class="main-content">
 
 <div class="outer-black-box">
 <div class="corner-text">اسعار البوت المدفوع</div>
@@ -281,18 +364,28 @@ cursor:pointer
 
 <a href="https://t.me/F9XBOT" class="pay-btn">اضغط هنا لأستكمال عمليه الدفع</a>
 
+</div> <!-- نهاية mainContent -->
 
+<!-- البوب أب الخاص بالطرق والمميزات (القديم) -->
 <div id="popup" class="popup">
 <div class="popup-box" id="popupContent"></div>
 </div>
 
-
 <script>
+// إخفاء نافذة البنود وإظهار المحتوى الرئيسي
+function acceptTerms() {
+    document.getElementById('termsPopup').style.display = 'none';
+    document.getElementById('mainContent').style.display = 'flex'; // نغير display إلى flex لأن body يستخدم flex
+}
 
 window.onload=function(){
+// تشغيل الإشعار المتحرك
 const notif=document.getElementById("iosNotif")
 setTimeout(()=>{notif.classList.add("show")},1000)
 setTimeout(()=>{notif.classList.remove("show")},11000)
+
+// التأكد أن المحتوى الرئيسي مخفي في البداية
+document.getElementById('mainContent').style.display = 'none';
 }
 
 function showPayments(){
