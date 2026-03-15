@@ -215,7 +215,7 @@ border-radius:10px;
 cursor:pointer
 }
 
-/* القسم الجديد لنافذة البنود الإجبارية */
+/* نافذة البنود الإجبارية */
 .terms-popup {
     display: flex;
     position: fixed;
@@ -223,7 +223,7 @@ cursor:pointer
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.95);  /* خلفية سوداء قاتمة */
     justify-content: center;
     align-items: center;
     z-index: 100000;
@@ -274,7 +274,7 @@ cursor:pointer
     background: #222;
 }
 .main-content {
-    display: none; /* المخفي إلى أن يوافق المستخدم */
+    display: none; /* المحتوى الأصلي مخفي تماماً */
     flex-direction: column;
     align-items: center;
     width: 100%;
@@ -283,15 +283,7 @@ cursor:pointer
 </head>
 <body>
 
-<div id="iosNotif" class="ios-notification">
-<img src="notice.jpg" class="notif-img">
-<div>
-<span class="notif-title">𝖳𝖾𝖺𝗆 𝖱𝗈𝗏𝖾𝗋</span>
-<span class="notif-body">𝖶𝖾𝗅𝖼𝗈𝗆𝖾 𝖳𝗈 𝖳𝗁𝖾 𝖯𝗋𝗂𝖼𝖾𝗌 𝖯𝖺𝗀𝖾</span>
-</div>
-</div>
-
-<!-- نافذة البنود الإجبارية (تظهر أولاً) -->
+<!-- نافذة البنود الإجبارية فقط (تظهر وحدها) -->
 <div id="termsPopup" class="terms-popup">
     <div class="terms-box">
         <div class="terms-title">بنود و سياسه Maker Bot's</div>
@@ -306,8 +298,17 @@ cursor:pointer
     </div>
 </div>
 
-<!-- المحتوى الأصلي المغلف داخل div مخفي لحين الموافقة -->
+<!-- المحتوى الأصلي -->
 <div id="mainContent" class="main-content">
+
+<!-- الإشعار المتحرك -->
+<div id="iosNotif" class="ios-notification">
+<img src="notice.jpg" class="notif-img">
+<div>
+<span class="notif-title">𝖳𝖾𝖺𝗆 𝖱𝗈𝗏𝖾𝗋</span>
+<span class="notif-body">𝖶𝖾𝗅𝖼𝗈𝗆𝖾 𝖳𝗈 𝖳𝗁𝖾 𝖯𝗋𝗂𝖼𝖾𝗌 𝖯𝖺𝗀𝖾</span>
+</div>
+</div>
 
 <div class="outer-black-box">
 <div class="corner-text">اسعار البوت المدفوع</div>
@@ -366,28 +367,30 @@ cursor:pointer
 
 </div> <!-- نهاية mainContent -->
 
-<!-- البوب أب الخاص بالطرق والمميزات (القديم) -->
+<!-- البوب أب الخاص بالطرق والمميزات -->
 <div id="popup" class="popup">
 <div class="popup-box" id="popupContent"></div>
 </div>
 
 <script>
-// إخفاء نافذة البنود وإظهار المحتوى الرئيسي
+// عند تحميل الصفحة، تأكد أن المحتوى الرئيسي مخفي
+window.onload = function() {
+    document.getElementById('mainContent').style.display = 'none';
+    // نافذة البنود ستكون ظاهرة بشكل طبيعي لأنها لم تخفى
+}
+
+// الموافقة على البنود
 function acceptTerms() {
-    document.getElementById('termsPopup').style.display = 'none';
-    document.getElementById('mainContent').style.display = 'flex'; // نغير display إلى flex لأن body يستخدم flex
+    document.getElementById('termsPopup').style.display = 'none';  // إخفاء نافذة البنود
+    document.getElementById('mainContent').style.display = 'flex'; // إظهار المحتوى الرئيسي
+    
+    // تشغيل الإشعار المتحرك بعد ظهور المحتوى
+    const notif = document.getElementById("iosNotif");
+    setTimeout(() => { notif.classList.add("show"); }, 1000);
+    setTimeout(() => { notif.classList.remove("show"); }, 11000);
 }
 
-window.onload=function(){
-// تشغيل الإشعار المتحرك
-const notif=document.getElementById("iosNotif")
-setTimeout(()=>{notif.classList.add("show")},1000)
-setTimeout(()=>{notif.classList.remove("show")},11000)
-
-// التأكد أن المحتوى الرئيسي مخفي في البداية
-document.getElementById('mainContent').style.display = 'none';
-}
-
+// وظائف البوب أب الإضافية
 function showPayments(){
 document.getElementById("popup").style.display="flex"
 document.getElementById("popupContent").innerHTML=`
