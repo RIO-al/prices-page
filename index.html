@@ -52,11 +52,12 @@ width: 100%;
 }
 
 .notif-img{
-width:65px;
-height:65px;
+width:65px;  /* تكبير الصورة */
+height:65px; /* تكبير الصورة */
 border-radius:50%;
 object-fit:cover;
 margin-right:12px;
+/* تم إزالة border:2px solid #fff */
 }
 
 .notif-title{
@@ -99,10 +100,11 @@ text-align:right
 }
 
 .log-image{
-width:40px;
-height:40px;
+width:40px;   /* تكبير الصورة */
+height:40px;  /* تكبير الصورة */
 border-radius:50%;
 object-fit:cover;
+/* تم إزالة border:2px solid #fff */
 }
 
 .container{
@@ -156,6 +158,22 @@ border-radius:50%;
 border:2px solid #fff
 }
 
+.extra-links{
+margin-top:12px;
+border-top:1px solid rgba(255,255,255,.3);
+padding-top:8px;
+font-size:13px;
+display: flex;
+justify-content: center;
+gap: 10px;
+}
+
+.extra-links span{
+color:#4da3ff;
+cursor:pointer;
+margin:0 6px
+}
+
 .popup{
 display:none;
 position:fixed;
@@ -188,6 +206,7 @@ border-radius:10px;
 cursor:pointer
 }
 
+/* نافذة البنود الإجبارية */
 .terms-popup {
     display: flex;
     position: fixed;
@@ -255,6 +274,7 @@ cursor:pointer
 </head>
 <body>
 
+<!-- نافذة البنود الإجبارية -->
 <div id="termsPopup" class="terms-popup">
     <div class="terms-box">
         <div class="terms-title">بنود و سياسه Maker Bot's</div>
@@ -269,10 +289,12 @@ cursor:pointer
     </div>
 </div>
 
+<!-- المحتوى الأصلي -->
 <div id="mainContent" class="main-content">
 
+<!-- الإشعار المتحرك -->
 <div id="iosNotif" class="ios-notification">
-<img src="notice.jpg" class="notif-img">
+<img src="notice.jpg" class="notif-img">  <!-- تم إزالة الإطار الأبيض -->
 <div>
 <span class="notif-title">𝖳𝖾𝖺𝗆 𝖱𝗈𝗏𝖾𝗋</span>
 <span class="notif-body">𝖶𝖾𝗅𝖼𝗈𝗆𝖾 𝖳𝗈 𝖳𝗁𝖾 𝖯𝗋𝗂𝖼𝖾𝗌 𝖯𝖺𝗀𝖾</span>
@@ -281,62 +303,83 @@ cursor:pointer
 
 <div class="outer-black-box">
 <div class="corner-text">اسعار البوت المدفوع</div>
-<img src="$.jpg" class="log-image">
+<img src="$.jpg" class="log-image">  <!-- تم إزالة الإطار الأبيض -->
 </div>
 
 <div class="container">
+
 <div class="pricing-rows">
+
 <div class="price-row">
 <div class="right-item">1 شهر = 4$</div>
 <div class="left-item">7 شهر = 22$</div>
 </div>
+
 <div class="price-row">
 <div class="right-item">2 شهر = 7$</div>
 <div class="left-item">8 شهر = 25$</div>
 </div>
+
 <div class="price-row">
 <div class="right-item">3 شهر = 10$</div>
 <div class="left-item">9 شهر = 28$</div>
 </div>
+
 <div class="price-row">
 <div class="right-item">4 شهر = 13$</div>
 <div class="left-item">10 شهر = 31$</div>
 </div>
+
 <div class="price-row">
 <div class="right-item">5 شهر = 16$</div>
 <div class="left-item">11 شهر = 34$</div>
 </div>
+
 <div class="price-row">
 <div class="right-item">6 شهر = 19$</div>
 <div class="left-item">12 شهر = 37$</div>
 </div>
+
+</div>
+
+<div class="extra-links">
+<span onclick="showFeatures()">مميزات البوت المدفوع</span>
+<span onclick="showPayments()">طرق الدفع</span>  <!-- تم تعديل النص -->
 </div>
 
 <div class="telegram-image-container">
 <img src="Telegram.jpg" class="telegram-image">
 </div>
-</div>
 
 </div>
 
+<!-- تم إزالة رابط الدفع السفلي -->
+
+</div> <!-- نهاية mainContent -->
+
+<!-- البوب أب الخاص بالطرق والمميزات -->
 <div id="popup" class="popup">
 <div class="popup-box" id="popupContent"></div>
 </div>
 
 <script>
+// عند تحميل الصفحة، تأكد أن المحتوى الرئيسي مخفي
 window.onload = function() {
     document.getElementById('mainContent').style.display = 'none';
 }
 
+// الموافقة على البنود
 function acceptTerms() {
     document.getElementById('termsPopup').style.display = 'none';
     document.getElementById('mainContent').style.display = 'flex';
     
+    // تشغيل الإشعار المتحرك بعد ظهور المحتوى
     const notif = document.getElementById("iosNotif");
     setTimeout(() => { notif.classList.add("show"); }, 1000);
     setTimeout(() => { notif.classList.remove("show"); }, 11000);
 }
 
+// وظائف البوب أب الإضافية
 function showPayments(){
 document.getElementById("popup").style.display="flex"
 document.getElementById("popupContent").innerHTML=`
